@@ -1,0 +1,136 @@
+{
+  "bug_folder": "/home/roraja/src/chromium-docs/active/470685260-Clipboard-Notify-user-when-paste-is-blocked-by-256MB-safety-limit",
+  "bug_id": "470685260",
+  "overall_status": "IN_PROGRESS",
+  "current_stage": 6,
+  "total_stages": 10,
+  "started_at": "2026-02-07T13:50:21.792614",
+  "updated_at": "2026-02-07T14:15:25.599149",
+  "completed_at": null,
+  "stages": {
+    "0": {
+      "stage_id": 0,
+      "stage_name": "prerequisites",
+      "status": "skipped",
+      "start_time": "2026-02-07T13:51:32.860721",
+      "end_time": "2026-02-07T13:51:32.860833",
+      "duration_seconds": 0,
+      "attempts": 0,
+      "output_file": null,
+      "prompt_file": null,
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [],
+      "skip_reason": "All outputs already exist: llm_out/stage-progress.json"
+    },
+    "1": {
+      "stage_id": 1,
+      "stage_name": "platform_repro",
+      "status": "completed",
+      "start_time": "2026-02-07T13:51:32.862342",
+      "end_time": "2026-02-07T13:54:22.488674",
+      "duration_seconds": 169.626332,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/470685260-Clipboard-Notify-user-when-paste-is-blocked-by-256MB-safety-limit/llm_out/outputs/stage01_platform_repro_output_20260207_135132.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/470685260-Clipboard-Notify-user-when-paste-is-blocked-by-256MB-safety-limit/llm_out/prompts/stage01_platform_repro_prompt_20260207_135132.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/repro.html",
+        "llm_out/platform-check.json"
+      ],
+      "skip_reason": null
+    },
+    "2": {
+      "stage_id": 2,
+      "stage_name": "root_cause",
+      "status": "completed",
+      "start_time": "2026-02-07T13:54:22.490664",
+      "end_time": "2026-02-07T13:57:58.958501",
+      "duration_seconds": 216.467837,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/470685260-Clipboard-Notify-user-when-paste-is-blocked-by-256MB-safety-limit/llm_out/outputs/stage02_root_cause_output_20260207_135422.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/470685260-Clipboard-Notify-user-when-paste-is-blocked-by-256MB-safety-limit/llm_out/prompts/stage02_root_cause_prompt_20260207_135422.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    },
+    "3": {
+      "stage_id": 3,
+      "stage_name": "hld",
+      "status": "completed",
+      "start_time": "2026-02-07T13:57:58.960538",
+      "end_time": "2026-02-07T14:00:56.240806",
+      "duration_seconds": 177.280268,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/470685260-Clipboard-Notify-user-when-paste-is-blocked-by-256MB-safety-limit/llm_out/outputs/stage03_hld_output_20260207_135758.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/470685260-Clipboard-Notify-user-when-paste-is-blocked-by-256MB-safety-limit/llm_out/prompts/stage03_hld_prompt_20260207_135758.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/03-architecture-hld.md"
+      ],
+      "skip_reason": null
+    },
+    "4": {
+      "stage_id": 4,
+      "stage_name": "lld",
+      "status": "completed",
+      "start_time": "2026-02-07T14:00:56.243384",
+      "end_time": "2026-02-07T14:05:16.232988",
+      "duration_seconds": 259.989604,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/470685260-Clipboard-Notify-user-when-paste-is-blocked-by-256MB-safety-limit/llm_out/outputs/stage04_lld_output_20260207_140056.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/470685260-Clipboard-Notify-user-when-paste-is-blocked-by-256MB-safety-limit/llm_out/prompts/stage04_lld_prompt_20260207_140056.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/04-architecture-lld.md"
+      ],
+      "skip_reason": null
+    },
+    "5": {
+      "stage_id": 5,
+      "stage_name": "tdd_tests",
+      "status": "completed",
+      "start_time": "2026-02-07T14:05:16.235867",
+      "end_time": "2026-02-07T14:15:25.597950",
+      "duration_seconds": 609.362083,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/470685260-Clipboard-Notify-user-when-paste-is-blocked-by-256MB-safety-limit/llm_out/outputs/stage05_tdd_tests_output_20260207_140516.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/470685260-Clipboard-Notify-user-when-paste-is-blocked-by-256MB-safety-limit/llm_out/prompts/stage05_tdd_tests_prompt_20260207_140516.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/05-tdd-tests.md"
+      ],
+      "skip_reason": null
+    }
+  },
+  "platform_compatible": true,
+  "skip_remaining": false,
+  "skip_reason": null,
+  "model_used": "claude-opus-4.5",
+  "chromium_src": "/workspace/cr4/src",
+  "baseline_commit": "3184e2f74c095035e20c2dfc9606dbc0086c04de",
+  "build_folder": "release_x64",
+  "build_error_count": 0,
+  "last_build_error": null,
+  "pre_sanity_build": {
+    "success": true,
+    "build_type": "pre_sanity",
+    "start_time": "2026-02-07T13:50:21.793219",
+    "end_time": "2026-02-07T13:51:32.858861",
+    "duration_seconds": 71.065642,
+    "exit_code": 0,
+    "log_file": "/home/roraja/src/chromium-docs/active/470685260-Clipboard-Notify-user-when-paste-is-blocked-by-256MB-safety-limit/llm_out/logs/build_pre_sanity_20260207_135021.log",
+    "error_message": null
+  },
+  "post_fix_build": null,
+  "fix_branch": "fix/470685260",
+  "skip_cl_upload": false,
+  "special_instructions": "When coming up with fix options, try to find existing code or features which show some message to user as toast. Choose a solution which is consistent with other features"
+}
