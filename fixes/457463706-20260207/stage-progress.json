@@ -1,0 +1,212 @@
+{
+  "bug_folder": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange",
+  "bug_id": "457463706",
+  "overall_status": "COMPLETED",
+  "current_stage": 9,
+  "total_stages": 10,
+  "started_at": "2026-02-06T04:35:56.622816",
+  "updated_at": "2026-02-06T10:36:36.339961",
+  "completed_at": "2026-02-06T10:36:36.339916",
+  "stages": {
+    "0": {
+      "stage_id": 0,
+      "stage_name": "prerequisites",
+      "status": "skipped",
+      "start_time": "2026-02-06T04:37:16.496637",
+      "end_time": "2026-02-06T04:37:16.496740",
+      "duration_seconds": 0,
+      "attempts": 0,
+      "output_file": null,
+      "prompt_file": null,
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [],
+      "skip_reason": "All outputs already exist: llm_out/stage-progress.json"
+    },
+    "1": {
+      "stage_id": 1,
+      "stage_name": "platform_repro",
+      "status": "completed",
+      "start_time": "2026-02-06T04:37:16.499604",
+      "end_time": "2026-02-06T04:39:19.590694",
+      "duration_seconds": 123.09109,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/outputs/stage01_platform_repro_output_20260206_043716.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/prompts/stage01_platform_repro_prompt_20260206_043716.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/repro.html",
+        "llm_out/platform-check.json"
+      ],
+      "skip_reason": null
+    },
+    "2": {
+      "stage_id": 2,
+      "stage_name": "root_cause",
+      "status": "completed",
+      "start_time": "2026-02-06T04:39:19.699327",
+      "end_time": "2026-02-06T04:41:43.131265",
+      "duration_seconds": 143.431938,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/outputs/stage02_root_cause_output_20260206_043919.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/prompts/stage02_root_cause_prompt_20260206_043919.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    },
+    "3": {
+      "stage_id": 3,
+      "stage_name": "hld",
+      "status": "completed",
+      "start_time": "2026-02-06T04:41:43.402146",
+      "end_time": "2026-02-06T04:44:46.790421",
+      "duration_seconds": 183.388275,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/outputs/stage03_hld_output_20260206_044143.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/prompts/stage03_hld_prompt_20260206_044143.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/03-architecture-hld.md"
+      ],
+      "skip_reason": null
+    },
+    "4": {
+      "stage_id": 4,
+      "stage_name": "lld",
+      "status": "completed",
+      "start_time": "2026-02-06T04:44:46.793581",
+      "end_time": "2026-02-06T04:48:01.339563",
+      "duration_seconds": 194.545982,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/outputs/stage04_lld_output_20260206_044446.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/prompts/stage04_lld_prompt_20260206_044446.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/04-architecture-lld.md"
+      ],
+      "skip_reason": null
+    },
+    "5": {
+      "stage_id": 5,
+      "stage_name": "tdd_tests",
+      "status": "completed",
+      "start_time": "2026-02-06T04:48:01.414955",
+      "end_time": "2026-02-06T04:57:02.952777",
+      "duration_seconds": 541.537822,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/outputs/stage05_tdd_tests_output_20260206_044801.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/prompts/stage05_tdd_tests_prompt_20260206_044801.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/05-tdd-tests.md"
+      ],
+      "skip_reason": null
+    },
+    "6": {
+      "stage_id": 6,
+      "stage_name": "implement_fix",
+      "status": "completed",
+      "start_time": "2026-02-06T09:50:05.355848",
+      "end_time": "2026-02-06T09:53:14.965832",
+      "duration_seconds": 189.609984,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/outputs/stage06_implement_fix_output_20260206_095005.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/prompts/stage06_implement_fix_prompt_20260206_095005.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/06-fix-changes.md"
+      ],
+      "skip_reason": null
+    },
+    "7": {
+      "stage_id": 7,
+      "stage_name": "build_verify",
+      "status": "completed",
+      "start_time": "2026-02-06T10:26:38.849115",
+      "end_time": "2026-02-06T10:31:56.185691",
+      "duration_seconds": 317.336576,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/outputs/stage07_build_verify_output_20260206_102638.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/prompts/stage07_build_verify_prompt_20260206_102638.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/07-build-results.md"
+      ],
+      "skip_reason": null
+    },
+    "8": {
+      "stage_id": 8,
+      "stage_name": "code_review",
+      "status": "completed",
+      "start_time": "2026-02-06T10:31:56.188953",
+      "end_time": "2026-02-06T10:33:50.195754",
+      "duration_seconds": 114.006801,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/outputs/stage08_code_review_output_20260206_103156.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/prompts/stage08_code_review_prompt_20260206_103156.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/08-code-review.md"
+      ],
+      "skip_reason": null
+    },
+    "9": {
+      "stage_id": 9,
+      "stage_name": "finalize",
+      "status": "completed",
+      "start_time": "2026-02-06T10:33:50.198864",
+      "end_time": "2026-02-06T10:36:36.338637",
+      "duration_seconds": 166.139773,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/outputs/stage09_finalize_output_20260206_103350.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/prompts/stage09_finalize_prompt_20260206_103350.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/fix-result.json",
+        "llm_out/02-fix-implementation.md"
+      ],
+      "skip_reason": null
+    }
+  },
+  "platform_compatible": true,
+  "skip_remaining": false,
+  "skip_reason": null,
+  "model_used": "claude-opus-4.5",
+  "chromium_src": "/workspace/cr4/src",
+  "baseline_commit": "c19ce9c8b51ed741cab836dbe33ad7cdc081cfec",
+  "build_folder": "release_x64",
+  "build_error_count": 0,
+  "last_build_error": null,
+  "pre_sanity_build": {
+    "success": true,
+    "build_type": "pre_sanity",
+    "start_time": "2026-02-06T04:35:56.623395",
+    "end_time": "2026-02-06T04:37:16.493924",
+    "duration_seconds": 79.870529,
+    "exit_code": 0,
+    "log_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/logs/build_pre_sanity_20260206_043556.log",
+    "error_message": null
+  },
+  "post_fix_build": {
+    "success": true,
+    "build_type": "post_fix",
+    "start_time": "2026-02-06T09:53:14.967363",
+    "end_time": "2026-02-06T09:53:31.286306",
+    "duration_seconds": 16.318943,
+    "exit_code": 0,
+    "log_file": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/logs/build_post_fix_20260206_095314.log",
+    "error_message": null
+  },
+  "fix_branch": null
+}
