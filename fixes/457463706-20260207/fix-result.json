@@ -1,0 +1,138 @@
+{
+  "bug_id": "457463706",
+  "bug_folder": "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange",
+  "status": "FIXED",
+  "timestamp": "2026-02-06T10:35:52.000Z",
+  "baseline_commit": "c19ce9c8b51ed741cab836dbe33ad7cdc081cfec",
+  "fix_branch": "fix/457463706_FIXED_TESTPASS",
+  "cl_url": "https://chromium-review.googlesource.com/c/chromium/src/+/7544895",
+  "build_directory": "/workspace/cr4/src/out/457463706",
+  "chrome_binary_path": "/workspace/cr4/src/out/457463706/chrome",
+  "files_modified": [
+    {
+      "path": "third_party/blink/renderer/core/clipboard/build.gni",
+      "change_type": "modify",
+      "lines_added": 1,
+      "lines_removed": 0
+    },
+    {
+      "path": "third_party/blink/renderer/core/clipboard/clipboard_change_observer.h",
+      "change_type": "add",
+      "lines_added": 32,
+      "lines_removed": 0
+    },
+    {
+      "path": "third_party/blink/renderer/core/clipboard/system_clipboard.cc",
+      "change_type": "modify",
+      "lines_added": 23,
+      "lines_removed": 24
+    },
+    {
+      "path": "third_party/blink/renderer/core/clipboard/system_clipboard.h",
+      "change_type": "modify",
+      "lines_added": 14,
+      "lines_removed": 16
+    },
+    {
+      "path": "third_party/blink/renderer/core/clipboard/system_clipboard_test.cc",
+      "change_type": "modify",
+      "lines_added": 43,
+      "lines_removed": 44
+    },
+    {
+      "path": "third_party/blink/renderer/modules/clipboard/clipboard.cc",
+      "change_type": "modify",
+      "lines_added": 2,
+      "lines_removed": 2
+    },
+    {
+      "path": "third_party/blink/renderer/modules/clipboard/clipboard_change_event_controller.cc",
+      "change_type": "modify",
+      "lines_added": 41,
+      "lines_removed": 32
+    },
+    {
+      "path": "third_party/blink/renderer/modules/clipboard/clipboard_change_event_controller.h",
+      "change_type": "modify",
+      "lines_added": 21,
+      "lines_removed": 9
+    },
+    {
+      "path": "third_party/blink/renderer/modules/clipboard/clipboard_change_event_controller_unittest.cc",
+      "change_type": "modify",
+      "lines_added": 261,
+      "lines_removed": 27
+    }
+  ],
+  "tests_added": [
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/modules/clipboard/clipboard_change_event_controller_unittest.cc",
+      "test_name": "ClipboardChangeEventControllerTest.Bug457463706_DirectObserverCallback",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/modules/clipboard/clipboard_change_event_controller_unittest.cc",
+      "test_name": "ClipboardChangeEventControllerTest.Bug457463706_ObserverRegistration",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/modules/clipboard/clipboard_change_event_controller_unittest.cc",
+      "test_name": "ClipboardChangeEventControllerTest.Bug457463706_NoDoubleRegistration",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/modules/clipboard/clipboard_change_event_controller_unittest.cc",
+      "test_name": "ClipboardChangeEventControllerTest.Bug457463706_DataFlowToController",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/modules/clipboard/clipboard_change_event_controller_unittest.cc",
+      "test_name": "ClipboardChangeEventControllerTest.Bug457463706_CleanupOnUnregister",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    }
+  ],
+  "tdd_verification": {
+    "tests_created_before_fix": true,
+    "tests_failed_before_fix": true,
+    "tests_passed_after_fix": true
+  },
+  "cq_dry_run": {
+    "triggered": true,
+    "status": "PENDING",
+    "url": "https://chromium-review.googlesource.com/7544895"
+  },
+  "verification": {
+    "build_passed": true,
+    "unit_tests_passed": true,
+    "web_tests_passed": true,
+    "manual_verification_passed": true,
+    "code_review_passed": true
+  },
+  "documentation_files": [
+    "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/01-fix-assessment.md",
+    "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/02-fix-implementation.md",
+    "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/03-architecture-hld.md",
+    "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/04-architecture-lld.md",
+    "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/05-tdd-tests.md",
+    "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/06-fix-changes.md",
+    "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/07-build-results.md",
+    "/home/roraja/src/chromium-docs/active/457463706-Reevaluate-PlatformEventDispatcher-usage-for-dispatching-clipboardchange/llm_out/08-code-review.md"
+  ],
+  "next_steps": [
+    "Wait for CQ dry run to complete",
+    "Add reviewers to CL",
+    "Address review feedback",
+    "Land the change"
+  ],
+  "notes": "This is an internal cleanup/architecture bug. The fix replaces PlatformEventDispatcher/PlatformEventController pattern with a simpler ClipboardChangeObserver interface. The change improves code clarity and separation of concerns without changing external behavior."
+}
