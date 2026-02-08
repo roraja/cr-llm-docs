@@ -10,8 +10,10 @@
 
 ## Files
 
+- [code_review.md](code_review.md)
 - [hld.md](hld.md)
 - [lld.md](lld.md)
+- [review_summary.md](review_summary.md)
 - [stage-progress.json](stage-progress.json)
 
 ---
