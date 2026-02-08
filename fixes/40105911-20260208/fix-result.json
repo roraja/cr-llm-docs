@@ -1,0 +1,49 @@
+{
+  "bug_id": "40105911",
+  "bug_folder": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats",
+  "status": "WONT_FIX",
+  "timestamp": "2026-02-08T11:50:33.695Z",
+  "baseline_commit": "latest_main",
+  "fix_branch": null,
+  "cl_uploaded": false,
+  "cl_url": null,
+  "build_directory": null,
+  "chrome_binary_path": null,
+  "files_modified": [],
+  "tests_added": [],
+  "tdd_verification": {
+    "tests_created_before_fix": false,
+    "tests_failed_before_fix": false,
+    "tests_passed_after_fix": false
+  },
+  "cq_dry_run": {
+    "triggered": false,
+    "status": "SKIPPED",
+    "url": null
+  },
+  "verification": {
+    "build_passed": null,
+    "unit_tests_passed": null,
+    "web_tests_passed": null,
+    "manual_verification_passed": null,
+    "code_review_passed": null,
+    "issue_still_exists": true
+  },
+  "wont_fix_reason": "P3/S4 performance optimization from 2019, open 6+ years with no fix attempted. Not a correctness bug — API behaves correctly per W3C spec. Partial mitigations exist (background thread encoding, clipboard.readText(), SelectiveClipboardFormatRead test flag). Fix would require ~290 lines across 7 files in security-sensitive area with TOCTOU implications. Risk/reward ratio unfavorable.",
+  "documentation_files": [
+    "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/01-fix-assessment.md",
+    "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/02-fix-implementation.md",
+    "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/03-architecture-hld.md",
+    "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/04-architecture-lld.md",
+    "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/05-tdd-tests.md",
+    "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/06-fix-changes.md",
+    "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/07-build-results.md",
+    "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/08-code-review.md"
+  ],
+  "next_steps": [
+    "Bug remains in 'New' status on issue tracker",
+    "LLD in 04-architecture-lld.md provides implementation blueprint if pursued later",
+    "Shipping SelectiveClipboardFormatRead to stable would partially mitigate"
+  ],
+  "notes": "All 8 analysis stages (01 through 08) unanimously determined WON'T FIX. Issue verified as still present in codebase at commit 7e52509ef8fe0 (origin/main). Special instructions followed: issue existence confirmed, complete analysis with assessment provided."
+}
