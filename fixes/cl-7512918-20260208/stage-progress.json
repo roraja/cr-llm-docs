@@ -1,0 +1,10 @@
+{
+  "cl_number": "7512918",
+  "overall_status": "IN_PROGRESS",
+  "stages": {
+    "hld": {
+      "status": "COMPLETED",
+      "duration_seconds": 241.8
+    }
+  }
+}
