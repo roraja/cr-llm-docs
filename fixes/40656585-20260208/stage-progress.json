@@ -1,0 +1,214 @@
+{
+  "bug_folder": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API",
+  "bug_id": "40656585",
+  "overall_status": "COMPLETED",
+  "current_stage": 9,
+  "total_stages": 10,
+  "started_at": "2026-02-07T18:33:18.196170",
+  "updated_at": "2026-02-07T21:59:34.782357",
+  "completed_at": "2026-02-07T21:59:34.782318",
+  "stages": {
+    "0": {
+      "stage_id": 0,
+      "stage_name": "prerequisites",
+      "status": "skipped",
+      "start_time": "2026-02-07T18:33:34.644717",
+      "end_time": "2026-02-07T18:33:34.644804",
+      "duration_seconds": 0,
+      "attempts": 0,
+      "output_file": null,
+      "prompt_file": null,
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [],
+      "skip_reason": "All outputs already exist: llm_out/stage-progress.json"
+    },
+    "1": {
+      "stage_id": 1,
+      "stage_name": "platform_repro",
+      "status": "completed",
+      "start_time": "2026-02-07T18:33:34.645797",
+      "end_time": "2026-02-07T18:34:34.919252",
+      "duration_seconds": 60.273455,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/outputs/stage01_platform_repro_output_20260207_183334.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/prompts/stage01_platform_repro_prompt_20260207_183334.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/repro.html",
+        "llm_out/platform-check.json"
+      ],
+      "skip_reason": null
+    },
+    "2": {
+      "stage_id": 2,
+      "stage_name": "root_cause",
+      "status": "completed",
+      "start_time": "2026-02-07T18:34:34.920750",
+      "end_time": "2026-02-07T18:38:20.071750",
+      "duration_seconds": 225.151,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/outputs/stage02_root_cause_output_20260207_183434.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/prompts/stage02_root_cause_prompt_20260207_183434.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    },
+    "3": {
+      "stage_id": 3,
+      "stage_name": "hld",
+      "status": "completed",
+      "start_time": "2026-02-07T18:38:20.073315",
+      "end_time": "2026-02-07T18:43:03.488073",
+      "duration_seconds": 283.414758,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/outputs/stage03_hld_output_20260207_183820.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/prompts/stage03_hld_prompt_20260207_183820.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/03-architecture-hld.md"
+      ],
+      "skip_reason": null
+    },
+    "4": {
+      "stage_id": 4,
+      "stage_name": "lld",
+      "status": "completed",
+      "start_time": "2026-02-07T18:43:04.525389",
+      "end_time": "2026-02-07T18:47:16.372489",
+      "duration_seconds": 251.8471,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/outputs/stage04_lld_output_20260207_184304.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/prompts/stage04_lld_prompt_20260207_184304.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/04-architecture-lld.md"
+      ],
+      "skip_reason": null
+    },
+    "5": {
+      "stage_id": 5,
+      "stage_name": "tdd_tests",
+      "status": "completed",
+      "start_time": "2026-02-07T18:47:16.374256",
+      "end_time": "2026-02-07T19:08:30.880897",
+      "duration_seconds": 1274.506641,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/outputs/stage05_tdd_tests_output_20260207_184716.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/prompts/stage05_tdd_tests_prompt_20260207_184716.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/05-tdd-tests.md"
+      ],
+      "skip_reason": null
+    },
+    "6": {
+      "stage_id": 6,
+      "stage_name": "implement_fix",
+      "status": "completed",
+      "start_time": "2026-02-07T19:08:30.882742",
+      "end_time": "2026-02-07T21:33:18.148100",
+      "duration_seconds": 8687.265358,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/outputs/stage06_implement_fix_output_20260207_190830.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/prompts/stage06_implement_fix_prompt_20260207_190830.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/06-fix-changes.md"
+      ],
+      "skip_reason": null
+    },
+    "7": {
+      "stage_id": 7,
+      "stage_name": "build_verify",
+      "status": "completed",
+      "start_time": "2026-02-07T21:35:10.272975",
+      "end_time": "2026-02-07T21:49:35.299354",
+      "duration_seconds": 865.026379,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/outputs/stage07_build_verify_output_20260207_213510.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/prompts/stage07_build_verify_prompt_20260207_213510.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/07-build-results.md"
+      ],
+      "skip_reason": null
+    },
+    "8": {
+      "stage_id": 8,
+      "stage_name": "code_review",
+      "status": "completed",
+      "start_time": "2026-02-07T21:49:35.301336",
+      "end_time": "2026-02-07T21:52:53.270269",
+      "duration_seconds": 197.968933,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/outputs/stage08_code_review_output_20260207_214935.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/prompts/stage08_code_review_prompt_20260207_214935.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/08-code-review.md"
+      ],
+      "skip_reason": null
+    },
+    "9": {
+      "stage_id": 9,
+      "stage_name": "finalize",
+      "status": "completed",
+      "start_time": "2026-02-07T21:52:53.272447",
+      "end_time": "2026-02-07T21:59:34.781317",
+      "duration_seconds": 401.50887,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/outputs/stage09_finalize_output_20260207_215253.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/prompts/stage09_finalize_prompt_20260207_215253.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/fix-result.json",
+        "llm_out/02-fix-implementation.md"
+      ],
+      "skip_reason": null
+    }
+  },
+  "platform_compatible": true,
+  "skip_remaining": false,
+  "skip_reason": null,
+  "model_used": "claude-opus-4.6",
+  "chromium_src": "/workspace/cr1/src",
+  "baseline_commit": "latest_main",
+  "build_folder": "release_x64",
+  "build_error_count": 0,
+  "last_build_error": null,
+  "pre_sanity_build": {
+    "success": true,
+    "build_type": "pre_sanity",
+    "start_time": "2026-02-07T18:33:18.196724",
+    "end_time": "2026-02-07T18:33:34.643429",
+    "duration_seconds": 16.446705,
+    "exit_code": 0,
+    "log_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/logs/build_pre_sanity_20260207_183318.log",
+    "error_message": null
+  },
+  "post_fix_build": {
+    "success": true,
+    "build_type": "post_fix",
+    "start_time": "2026-02-07T21:33:18.152675",
+    "end_time": "2026-02-07T21:35:10.270099",
+    "duration_seconds": 112.117424,
+    "exit_code": 0,
+    "log_file": "/home/roraja/src/chromium-docs/bugfixer_dashboard/wave5_cr1/40656585-Support-imagebmp-for-Clipboard-API/llm_out/logs/build_post_fix_20260207_213318.log",
+    "error_message": null
+  },
+  "fix_branch": "bugs/40656585-Support-imagebmp-for-Clipboard-API",
+  "skip_cl_upload": false,
+  "special_instructions": null
+}
