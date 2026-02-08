@@ -1,0 +1,119 @@
+{
+  "bug_folder": "C:\\Users\\roraja\\src\\active\\41397311-Adding-lines-while-at-the-top-line-of-a-text-area-hides-the-added-lines-above-the-visible-area",
+  "bug_id": "41397311",
+  "overall_status": "IN_PROGRESS",
+  "current_stage": 5,
+  "total_stages": 10,
+  "started_at": "2026-02-08T19:17:27.623538",
+  "updated_at": "2026-02-08T21:47:32.785585",
+  "completed_at": null,
+  "stages": {
+    "0": {
+      "stage_id": 0,
+      "stage_name": "prerequisites",
+      "status": "skipped",
+      "start_time": "2026-02-08T19:27:54.008021",
+      "end_time": "2026-02-08T19:27:54.008198",
+      "duration_seconds": 0,
+      "attempts": 0,
+      "output_file": null,
+      "prompt_file": null,
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [],
+      "skip_reason": "All outputs already exist: llm_out/stage-progress.json"
+    },
+    "1": {
+      "stage_id": 1,
+      "stage_name": "platform_repro",
+      "status": "completed",
+      "start_time": "2026-02-08T19:19:26.517903",
+      "end_time": "2026-02-08T13:58:00.670Z",
+      "duration_seconds": null,
+      "attempts": 3,
+      "output_file": "llm_out/platform-check.json",
+      "prompt_file": "llm_out/prompts/stage01_platform_repro_prompt_20260208_192754.md",
+      "error_message": null,
+      "model_output_summary": "Platform compatible (Windows 11 x64). Bug affects Linux and Windows. Created repro.html with textarea scroll bug reproduction and platform-check.json. Bug involves incorrect scroll position when pressing Enter at first line after Ctrl+End then Ctrl+Home in a textarea.",
+      "outputs_created": [
+        "llm_out/repro.html",
+        "llm_out/platform-check.json"
+      ],
+      "skip_reason": null
+    },
+    "2": {
+      "stage_id": 2,
+      "stage_name": "root_cause",
+      "status": "completed",
+      "start_time": "2026-02-08T21:12:00.330908",
+      "end_time": "2026-02-08T21:32:05.457098",
+      "duration_seconds": 1205.12619,
+      "attempts": 1,
+      "output_file": "C:\\Users\\roraja\\src\\active\\41397311-Adding-lines-while-at-the-top-line-of-a-text-area-hides-the-added-lines-above-the-visible-area\\llm_out\\outputs\\stage02_root_cause_output_20260208_211200.txt",
+      "prompt_file": "C:\\Users\\roraja\\src\\active\\41397311-Adding-lines-while-at-the-top-line-of-a-text-area-hides-the-added-lines-above-the-visible-area\\llm_out\\prompts\\stage02_root_cause_prompt_20260208_211200.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    },
+    "3": {
+      "stage_id": 3,
+      "stage_name": "hld",
+      "status": "completed",
+      "start_time": "2026-02-08T21:32:05.461289",
+      "end_time": "2026-02-08T21:37:56.037122",
+      "duration_seconds": 350.575833,
+      "attempts": 1,
+      "output_file": "C:\\Users\\roraja\\src\\active\\41397311-Adding-lines-while-at-the-top-line-of-a-text-area-hides-the-added-lines-above-the-visible-area\\llm_out\\outputs\\stage03_hld_output_20260208_213205.txt",
+      "prompt_file": "C:\\Users\\roraja\\src\\active\\41397311-Adding-lines-while-at-the-top-line-of-a-text-area-hides-the-added-lines-above-the-visible-area\\llm_out\\prompts\\stage03_hld_prompt_20260208_213205.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/03-architecture-hld.md"
+      ],
+      "skip_reason": null
+    },
+    "4": {
+      "stage_id": 4,
+      "stage_name": "lld",
+      "status": "completed",
+      "start_time": "2026-02-08T21:37:56.040442",
+      "end_time": "2026-02-08T21:47:32.783641",
+      "duration_seconds": 576.743199,
+      "attempts": 1,
+      "output_file": "C:\\Users\\roraja\\src\\active\\41397311-Adding-lines-while-at-the-top-line-of-a-text-area-hides-the-added-lines-above-the-visible-area\\llm_out\\outputs\\stage04_lld_output_20260208_213756.txt",
+      "prompt_file": "C:\\Users\\roraja\\src\\active\\41397311-Adding-lines-while-at-the-top-line-of-a-text-area-hides-the-added-lines-above-the-visible-area\\llm_out\\prompts\\stage04_lld_prompt_20260208_213756.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/04-architecture-lld.md"
+      ],
+      "skip_reason": null
+    }
+  },
+  "platform_compatible": true,
+  "skip_remaining": false,
+  "skip_reason": null,
+  "model_used": "claude-opus-4.6",
+  "chromium_src": "Q:/cr/src",
+  "baseline_commit": "latest_main",
+  "build_folder": "debug_full_x64",
+  "build_error_count": 0,
+  "last_build_error": null,
+  "pre_sanity_build": {
+    "success": true,
+    "build_type": "pre_sanity",
+    "start_time": "2026-02-08T19:17:27.628254",
+    "end_time": "2026-02-08T19:19:26.511292",
+    "duration_seconds": 118.883038,
+    "exit_code": 0,
+    "log_file": "C:\\Users\\roraja\\src\\active\\41397311-Adding-lines-while-at-the-top-line-of-a-text-area-hides-the-added-lines-above-the-visible-area\\llm_out\\logs\\build_pre_sanity_20260208_191727.log",
+    "error_message": null
+  },
+  "post_fix_build": null,
+  "fix_branch": "fix/41397311",
+  "skip_cl_upload": false,
+  "special_instructions": null
+}
