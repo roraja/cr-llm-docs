@@ -5,6 +5,14 @@
     "hld": {
       "status": "COMPLETED",
       "duration_seconds": 241.8
+    },
+    "lld": {
+      "status": "COMPLETED",
+      "duration_seconds": 144.6
+    },
+    "review": {
+      "status": "COMPLETED",
+      "duration_seconds": 85.8
     }
   }
 }
