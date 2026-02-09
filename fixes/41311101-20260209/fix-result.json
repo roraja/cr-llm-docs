@@ -1,0 +1,153 @@
+{
+  "bug_id": "41311101",
+  "bug_folder": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection",
+  "status": "FIXED",
+  "timestamp": "2026-02-09T14:45:00Z",
+  "baseline_commit": "latest_main",
+  "fix_branch": "fix/41311101_FIXED_TESTPASS",
+  "cl_uploaded": true,
+  "cl_url": "https://chromium-review.googlesource.com/c/chromium/src/+/7559230",
+  "build_directory": "/workspace/cr1/src/out/41311101",
+  "chrome_binary_path": "/workspace/cr1/src/out/41311101/chrome",
+  "files_modified": [
+    {
+      "path": "third_party/blink/renderer/core/editing/dom_selection.cc",
+      "change_type": "modify",
+      "lines_added": 59,
+      "lines_removed": 16
+    },
+    {
+      "path": "third_party/blink/renderer/core/editing/dom_selection_test.cc",
+      "change_type": "modify",
+      "lines_added": 261,
+      "lines_removed": 0
+    }
+  ],
+  "tests_added": [
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/dom_selection_test.cc",
+      "test_name": "DOMSelectionTest.Bug41311101_RangeCountDisplayNoneWithFlag",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/dom_selection_test.cc",
+      "test_name": "DOMSelectionTest.Bug41311101_DirectionDisplayNoneWithFlag",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/dom_selection_test.cc",
+      "test_name": "DOMSelectionTest.Bug41311101_RangeCountWithFlag",
+      "failed_before_fix": false,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/dom_selection_test.cc",
+      "test_name": "DOMSelectionTest.Bug41311101_DirectionForwardWithFlag",
+      "failed_before_fix": false,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/dom_selection_test.cc",
+      "test_name": "DOMSelectionTest.Bug41311101_DirectionNoneWithFlag",
+      "failed_before_fix": false,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/dom_selection_test.cc",
+      "test_name": "DOMSelectionTest.Bug41311101_ToStringAcrossInlineBoundaryWithFlag",
+      "failed_before_fix": false,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/dom_selection_test.cc",
+      "test_name": "DOMSelectionTest.Bug41311101_ContainsNodeFullWithFlag",
+      "failed_before_fix": false,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/dom_selection_test.cc",
+      "test_name": "DOMSelectionTest.Bug41311101_ContainsNodePartialWithFlag",
+      "failed_before_fix": false,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/dom_selection_test.cc",
+      "test_name": "DOMSelectionTest.Bug41311101_DeleteFromDocumentWithFlag",
+      "failed_before_fix": false,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/dom_selection_test.cc",
+      "test_name": "DOMSelectionTest.Bug41311101_GetRangeAtAcrossInlineBoundaryWithFlag",
+      "failed_before_fix": false,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/dom_selection_test.cc",
+      "test_name": "DOMSelectionTest.Bug41311101_RangeCountInShadowDOMWithFlag",
+      "failed_before_fix": false,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/dom_selection_test.cc",
+      "test_name": "DOMSelectionTest.Bug41311101_RangeCountEmptyWithFlag",
+      "failed_before_fix": false,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/dom_selection_test.cc",
+      "test_name": "DOMSelectionTest.Bug41311101_ToStringCollapsedWithFlag",
+      "failed_before_fix": false,
+      "passed_after_fix": true
+    }
+  ],
+  "tdd_verification": {
+    "tests_created_before_fix": true,
+    "tests_failed_before_fix": true,
+    "tests_passed_after_fix": true
+  },
+  "cq_dry_run": {
+    "triggered": true,
+    "status": "PENDING",
+    "url": "https://chromium-review.googlesource.com/c/chromium/src/+/7559230"
+  },
+  "verification": {
+    "build_passed": true,
+    "unit_tests_passed": true,
+    "web_tests_passed": true,
+    "manual_verification_passed": true,
+    "code_review_passed": true
+  },
+  "documentation_files": [
+    "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/01-fix-assessment.md",
+    "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/02-fix-implementation.md",
+    "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/03-architecture-hld.md",
+    "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/04-architecture-lld.md",
+    "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/05-tdd-tests.md",
+    "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/06-fix-changes.md",
+    "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/07-build-results.md",
+    "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/08-code-review.md"
+  ],
+  "next_steps": [
+    "Wait for CQ dry run to complete",
+    "Add reviewers to the CL",
+    "Address any review feedback",
+    "Land the change"
+  ],
+  "notes": "All 13 unit tests pass. 2 TDD tests (RangeCountDisplayNoneWithFlag, DirectionDisplayNoneWithFlag) proved the bug exists before the fix. CL uploaded as https://chromium-review.googlesource.com/c/chromium/src/+/7559230 with CQ dry run triggered."
+}
