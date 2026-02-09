@@ -1,10 +1,22 @@
 {
   "cl_number": "6918637",
-  "overall_status": "IN_PROGRESS",
+  "overall_status": "COMPLETED",
   "stages": {
     "hld": {
       "status": "COMPLETED",
       "duration_seconds": 491.4
+    },
+    "lld": {
+      "status": "COMPLETED",
+      "duration_seconds": 276.1
+    },
+    "review": {
+      "status": "COMPLETED",
+      "duration_seconds": 99.0
+    },
+    "summary": {
+      "status": "COMPLETED",
+      "duration_seconds": 123.3
     }
   }
 }
