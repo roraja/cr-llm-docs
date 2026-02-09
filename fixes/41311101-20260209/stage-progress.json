@@ -1,0 +1,233 @@
+{
+  "bug_folder": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection",
+  "bug_id": "41311101",
+  "overall_status": "COMPLETED",
+  "current_stage": 10,
+  "total_stages": 11,
+  "started_at": "2026-02-09T11:11:08.949436",
+  "updated_at": "2026-02-09T14:49:09.749322",
+  "completed_at": "2026-02-09T14:49:09.749263",
+  "stages": {
+    "0": {
+      "stage_id": 0,
+      "stage_name": "prerequisites",
+      "status": "skipped",
+      "start_time": "2026-02-09T11:12:02.292530",
+      "end_time": "2026-02-09T11:12:02.292643",
+      "duration_seconds": 0,
+      "attempts": 0,
+      "output_file": null,
+      "prompt_file": null,
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [],
+      "skip_reason": "All outputs already exist: llm_out/stage-progress.json"
+    },
+    "1": {
+      "stage_id": 1,
+      "stage_name": "platform_repro",
+      "status": "completed",
+      "start_time": "2026-02-09T11:12:02.293595",
+      "end_time": "2026-02-09T11:13:34.685602",
+      "duration_seconds": 92.392007,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/outputs/stage01_platform_repro_output_20260209_111202.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/prompts/stage01_platform_repro_prompt_20260209_111202.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/repro.html",
+        "llm_out/platform-check.json"
+      ],
+      "skip_reason": null
+    },
+    "2": {
+      "stage_id": 2,
+      "stage_name": "root_cause",
+      "status": "completed",
+      "start_time": "2026-02-09T11:13:34.686841",
+      "end_time": "2026-02-09T11:17:39.634087",
+      "duration_seconds": 244.947246,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/outputs/stage02_root_cause_output_20260209_111334.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/prompts/stage02_root_cause_prompt_20260209_111334.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    },
+    "3": {
+      "stage_id": 3,
+      "stage_name": "hld",
+      "status": "completed",
+      "start_time": "2026-02-09T11:17:39.635543",
+      "end_time": "2026-02-09T11:22:29.656281",
+      "duration_seconds": 290.020738,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/outputs/stage03_hld_output_20260209_111739.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/prompts/stage03_hld_prompt_20260209_111739.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/03-architecture-hld.md"
+      ],
+      "skip_reason": null
+    },
+    "4": {
+      "stage_id": 4,
+      "stage_name": "lld",
+      "status": "completed",
+      "start_time": "2026-02-09T11:22:29.658532",
+      "end_time": "2026-02-09T11:26:34.406069",
+      "duration_seconds": 244.747537,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/outputs/stage04_lld_output_20260209_112229.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/prompts/stage04_lld_prompt_20260209_112229.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/04-architecture-lld.md"
+      ],
+      "skip_reason": null
+    },
+    "5": {
+      "stage_id": 5,
+      "stage_name": "tdd_tests",
+      "status": "completed",
+      "start_time": "2026-02-09T11:26:34.407759",
+      "end_time": "2026-02-09T14:11:08.905250",
+      "duration_seconds": 9874.497491,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/outputs/stage05_tdd_tests_output_20260209_112634.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/prompts/stage05_tdd_tests_prompt_20260209_112634.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/05-tdd-tests.md"
+      ],
+      "skip_reason": null
+    },
+    "6": {
+      "stage_id": 6,
+      "stage_name": "implement_fix",
+      "status": "completed",
+      "start_time": "2026-02-09T14:11:08.906864",
+      "end_time": "2026-02-09T14:16:38.828757",
+      "duration_seconds": 329.921893,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/outputs/stage06_implement_fix_output_20260209_141108.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/prompts/stage06_implement_fix_prompt_20260209_141108.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/06-fix-changes.md"
+      ],
+      "skip_reason": null
+    },
+    "7": {
+      "stage_id": 7,
+      "stage_name": "build_verify",
+      "status": "completed",
+      "start_time": "2026-02-09T14:17:21.238599",
+      "end_time": "2026-02-09T14:33:52.394036",
+      "duration_seconds": 991.155437,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/outputs/stage07_build_verify_output_20260209_141721.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/prompts/stage07_build_verify_prompt_20260209_141721.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/07-build-results.md"
+      ],
+      "skip_reason": null
+    },
+    "8": {
+      "stage_id": 8,
+      "stage_name": "code_review",
+      "status": "completed",
+      "start_time": "2026-02-09T14:33:52.395903",
+      "end_time": "2026-02-09T14:42:46.512884",
+      "duration_seconds": 534.116981,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/outputs/stage08_code_review_output_20260209_143352.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/prompts/stage08_code_review_prompt_20260209_143352.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/08-code-review.md"
+      ],
+      "skip_reason": null
+    },
+    "9": {
+      "stage_id": 9,
+      "stage_name": "finalize",
+      "status": "completed",
+      "start_time": "2026-02-09T14:42:46.515079",
+      "end_time": "2026-02-09T14:46:37.999528",
+      "duration_seconds": 231.484449,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/outputs/stage09_finalize_output_20260209_144246.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/prompts/stage09_finalize_prompt_20260209_144246.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/fix-result.json",
+        "llm_out/02-fix-implementation.md"
+      ],
+      "skip_reason": null
+    },
+    "10": {
+      "stage_id": 10,
+      "stage_name": "explainer",
+      "status": "completed",
+      "start_time": "2026-02-09T14:46:38.001695",
+      "end_time": "2026-02-09T14:49:09.748220",
+      "duration_seconds": 151.746525,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/outputs/stage10_explainer_output_20260209_144638.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/prompts/stage10_explainer_prompt_20260209_144638.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/explainer.md",
+        "llm_out/chromefeature-help.md"
+      ],
+      "skip_reason": null
+    }
+  },
+  "platform_compatible": true,
+  "skip_remaining": false,
+  "skip_reason": null,
+  "model_used": "claude-opus-4.6",
+  "chromium_src": "/workspace/cr1/src",
+  "baseline_commit": "latest_main",
+  "build_folder": "release_x64",
+  "build_error_count": 0,
+  "last_build_error": null,
+  "pre_sanity_build": {
+    "success": true,
+    "build_type": "pre_sanity",
+    "start_time": "2026-02-09T11:11:08.949881",
+    "end_time": "2026-02-09T11:12:02.291172",
+    "duration_seconds": 53.341291,
+    "exit_code": 0,
+    "log_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/logs/build_pre_sanity_20260209_111108.log",
+    "error_message": null
+  },
+  "post_fix_build": {
+    "success": true,
+    "build_type": "post_fix",
+    "start_time": "2026-02-09T14:16:38.833596",
+    "end_time": "2026-02-09T14:17:21.236304",
+    "duration_seconds": 42.402708,
+    "exit_code": 0,
+    "log_file": "/home/roraja/src/chromium-docs/active/41311101-Make-DOMSelection-not-to-use-VisibleSelection/llm_out/logs/build_post_fix_20260209_141638.log",
+    "error_message": null
+  },
+  "fix_branch": "fix/41311101",
+  "skip_cl_upload": false,
+  "special_instructions": null,
+  "include_explainer": true
+}
