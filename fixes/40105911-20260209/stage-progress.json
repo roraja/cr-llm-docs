@@ -1,0 +1,214 @@
+{
+  "bug_folder": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats",
+  "bug_id": "40105911",
+  "overall_status": "COMPLETED",
+  "current_stage": 9,
+  "total_stages": 10,
+  "started_at": "2026-02-08T11:31:58.528193",
+  "updated_at": "2026-02-08T11:52:07.664428",
+  "completed_at": "2026-02-08T11:52:07.664389",
+  "stages": {
+    "0": {
+      "stage_id": 0,
+      "stage_name": "prerequisites",
+      "status": "skipped",
+      "start_time": "2026-02-08T11:32:13.355472",
+      "end_time": "2026-02-08T11:32:13.355560",
+      "duration_seconds": 0,
+      "attempts": 0,
+      "output_file": null,
+      "prompt_file": null,
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [],
+      "skip_reason": "All outputs already exist: llm_out/stage-progress.json"
+    },
+    "1": {
+      "stage_id": 1,
+      "stage_name": "platform_repro",
+      "status": "completed",
+      "start_time": "2026-02-08T11:32:13.356507",
+      "end_time": "2026-02-08T11:34:14.426955",
+      "duration_seconds": 121.070448,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/outputs/stage01_platform_repro_output_20260208_113213.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/prompts/stage01_platform_repro_prompt_20260208_113213.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/repro.html",
+        "llm_out/platform-check.json"
+      ],
+      "skip_reason": null
+    },
+    "2": {
+      "stage_id": 2,
+      "stage_name": "root_cause",
+      "status": "completed",
+      "start_time": "2026-02-08T11:34:14.428405",
+      "end_time": "2026-02-08T11:36:41.367691",
+      "duration_seconds": 146.939286,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/outputs/stage02_root_cause_output_20260208_113414.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/prompts/stage02_root_cause_prompt_20260208_113414.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    },
+    "3": {
+      "stage_id": 3,
+      "stage_name": "hld",
+      "status": "completed",
+      "start_time": "2026-02-08T11:36:41.369903",
+      "end_time": "2026-02-08T11:41:12.292069",
+      "duration_seconds": 270.922166,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/outputs/stage03_hld_output_20260208_113641.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/prompts/stage03_hld_prompt_20260208_113641.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/03-architecture-hld.md"
+      ],
+      "skip_reason": null
+    },
+    "4": {
+      "stage_id": 4,
+      "stage_name": "lld",
+      "status": "completed",
+      "start_time": "2026-02-08T11:41:12.293697",
+      "end_time": "2026-02-08T11:45:15.227763",
+      "duration_seconds": 242.934066,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/outputs/stage04_lld_output_20260208_114112.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/prompts/stage04_lld_prompt_20260208_114112.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/04-architecture-lld.md"
+      ],
+      "skip_reason": null
+    },
+    "5": {
+      "stage_id": 5,
+      "stage_name": "tdd_tests",
+      "status": "completed",
+      "start_time": "2026-02-08T11:45:15.229814",
+      "end_time": "2026-02-08T11:46:16.782725",
+      "duration_seconds": 61.552911,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/outputs/stage05_tdd_tests_output_20260208_114515.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/prompts/stage05_tdd_tests_prompt_20260208_114515.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/05-tdd-tests.md"
+      ],
+      "skip_reason": null
+    },
+    "6": {
+      "stage_id": 6,
+      "stage_name": "implement_fix",
+      "status": "completed",
+      "start_time": "2026-02-08T11:46:16.784489",
+      "end_time": "2026-02-08T11:47:56.889152",
+      "duration_seconds": 100.104663,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/outputs/stage06_implement_fix_output_20260208_114616.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/prompts/stage06_implement_fix_prompt_20260208_114616.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/06-fix-changes.md"
+      ],
+      "skip_reason": null
+    },
+    "7": {
+      "stage_id": 7,
+      "stage_name": "build_verify",
+      "status": "completed",
+      "start_time": "2026-02-08T11:48:06.532765",
+      "end_time": "2026-02-08T11:49:13.815174",
+      "duration_seconds": 67.282409,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/outputs/stage07_build_verify_output_20260208_114806.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/prompts/stage07_build_verify_prompt_20260208_114806.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/07-build-results.md"
+      ],
+      "skip_reason": null
+    },
+    "8": {
+      "stage_id": 8,
+      "stage_name": "code_review",
+      "status": "completed",
+      "start_time": "2026-02-08T11:49:13.817105",
+      "end_time": "2026-02-08T11:50:30.833380",
+      "duration_seconds": 77.016275,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/outputs/stage08_code_review_output_20260208_114913.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/prompts/stage08_code_review_prompt_20260208_114913.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/08-code-review.md"
+      ],
+      "skip_reason": null
+    },
+    "9": {
+      "stage_id": 9,
+      "stage_name": "finalize",
+      "status": "completed",
+      "start_time": "2026-02-08T11:50:30.835498",
+      "end_time": "2026-02-08T11:52:07.663289",
+      "duration_seconds": 96.827791,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/outputs/stage09_finalize_output_20260208_115030.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/prompts/stage09_finalize_prompt_20260208_115030.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/fix-result.json",
+        "llm_out/02-fix-implementation.md"
+      ],
+      "skip_reason": null
+    }
+  },
+  "platform_compatible": true,
+  "skip_remaining": false,
+  "skip_reason": null,
+  "model_used": "claude-opus-4.6",
+  "chromium_src": "/workspace/cr3/src",
+  "baseline_commit": "latest_main",
+  "build_folder": "release_x64",
+  "build_error_count": 0,
+  "last_build_error": null,
+  "pre_sanity_build": {
+    "success": true,
+    "build_type": "pre_sanity",
+    "start_time": "2026-02-08T11:31:58.528621",
+    "end_time": "2026-02-08T11:32:13.354075",
+    "duration_seconds": 14.825454,
+    "exit_code": 0,
+    "log_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/logs/build_pre_sanity_20260208_113158.log",
+    "error_message": null
+  },
+  "post_fix_build": {
+    "success": true,
+    "build_type": "post_fix",
+    "start_time": "2026-02-08T11:47:56.893965",
+    "end_time": "2026-02-08T11:48:06.530561",
+    "duration_seconds": 9.636596,
+    "exit_code": 0,
+    "log_file": "/home/roraja/src/chromium-docs/active/40105911-ClipboardItem-prematurely-generates-all-available-formats/llm_out/logs/build_post_fix_20260208_114756.log",
+    "error_message": null
+  },
+  "fix_branch": "fix/40105911",
+  "skip_cl_upload": false,
+  "special_instructions": "Double check if the issue still exists today. If you confirm that the issue is not there, don't proceed with any fix. Simply call it won't fix. Provide complete analysis with assessment"
+}
