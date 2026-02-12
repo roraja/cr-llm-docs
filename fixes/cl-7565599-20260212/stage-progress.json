@@ -4,19 +4,19 @@
   "stages": {
     "hld": {
       "status": "COMPLETED",
-      "duration_seconds": 165.7
+      "duration_seconds": 0.0
     },
     "lld": {
       "status": "COMPLETED",
-      "duration_seconds": 87.8
+      "duration_seconds": 0.0
     },
     "review": {
       "status": "COMPLETED",
-      "duration_seconds": 66.5
+      "duration_seconds": 0.0
     },
     "summary": {
       "status": "COMPLETED",
-      "duration_seconds": 104.0
+      "duration_seconds": 0.0
     }
   }
 }
