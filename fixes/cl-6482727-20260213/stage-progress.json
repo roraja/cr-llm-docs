@@ -1,6 +1,6 @@
 {
   "cl_number": "6482727",
-  "overall_status": "IN_PROGRESS",
+  "overall_status": "COMPLETED",
   "stages": {
     "hld": {
       "status": "COMPLETED",
@@ -13,6 +13,10 @@
     "review": {
       "status": "COMPLETED",
       "duration_seconds": 148.3
+    },
+    "summary": {
+      "status": "COMPLETED",
+      "duration_seconds": 194.1
     }
   }
 }
