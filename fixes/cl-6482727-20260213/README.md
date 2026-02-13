@@ -2,7 +2,7 @@
 
 **Title:** CL 6482727: [EditContext] Update attribute types in TextFormat to follow spec
 
-**Status:** REVIEWING
+**Status:** COMPLETED
 **Model:** claude-opus-4.6
 **Created:** 2026-02-13 08:58:46
 
@@ -13,6 +13,7 @@
 - [code_review.md](code_review.md)
 - [hld.md](hld.md)
 - [lld.md](lld.md)
+- [review_summary.md](review_summary.md)
 - [stage-progress.json](stage-progress.json)
 
 ---
