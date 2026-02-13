@@ -1,303 +1,288 @@
-# High-Level Design: CL 7556734 — [Clipboard][Windows] Use async ReadFileNames with ThreadPool offloading
+# High-Level Design: [Clipboard][Windows] Use async ReadFileNames with ThreadPool offloading
 
-**CL URL:** https://chromium-review.googlesource.com/c/chromium/src/+/7556734
+**CL:** [7556734](https://chromium-review.googlesource.com/c/chromium/src/+/7556734)
 **Author:** Hewro Hewei (ihewro@chromium.org)
-**Status:** NEW
 **Bug:** [458194647](https://crbug.com/458194647)
+**Status:** NEW (Patch Set 12)
 
 ---
 
 ## 1. Executive Summary
 
-This CL migrates `ClipboardWin::ReadFilenames` from a synchronous, UI-thread-blocking implementation to an asynchronous model that offloads the blocking Win32 clipboard access (`OpenClipboard`/`GetClipboardData`/`CloseClipboard`) onto a `base::ThreadPool` sequenced task runner with the `MayBlock` trait. This is necessary because Win32 clipboard operations can block for an indeterminate time (e.g., when the clipboard owner is hung or performing delayed rendering), causing UI thread jank and potential application hangs. By following the same async pattern already established for `ReadHTML` ([CL 7151578](https://chromium-review.googlesource.com/c/chromium/src/+/7151578)) and simplified via [CL 7565599](https://chromium-review.googlesource.com/c/chromium/src/+/7565599), this CL incrementally moves the Windows clipboard subsystem toward fully non-blocking UI-thread reads, improving responsiveness for file-drop paste operations across Chromium on Windows.
+This CL adds an asynchronous override of `ClipboardWin::ReadFilenames` that offloads the blocking Win32 clipboard access (`OpenClipboard`/`GetClipboardData`/`CloseClipboard`) from the UI thread to a `base::ThreadPool` sequenced task runner with `MayBlock` trait. The existing synchronous `ReadFilenames` is refactored into a `static` helper (`ReadFilenamesInternal`) that performs the actual Win32 work, and the new async override delegates to `ReadAsync(...)` which schedules `ReadFilenamesInternal` on the thread pool and posts the result back via callback. This is needed because Win32 clipboard operations are blocking system calls that can stall the UI thread and cause jank; moving them off the UI thread improves responsiveness, particularly when clipboard data is large or the clipboard owner is slow. The expected impact is reduced UI-thread latency for file-drop paste operations on Windows, with no behavioral change for callers that still use the synchronous path.
 
 ---
 
 ## 2. Architecture Overview
 
-### 2.1 Affected Components/Modules
+### Affected Components
 
-| Component | Path | Role |
+| Component | Layer | Impact |
 |---|---|---|
-| **ClipboardWin** | `ui/base/clipboard/clipboard_win.cc/.h` | Windows-specific `Clipboard` implementation |
-| **Clipboard (base class)** | `ui/base/clipboard/clipboard.h` | Cross-platform abstract clipboard interface |
-| **ThreadPool** | `base/task/thread_pool.h` | Chromium's thread pool for offloading blocking work |
-| **ScopedClipboard** | `ui/base/clipboard/clipboard_util_win.h` | RAII wrapper for Win32 `OpenClipboard`/`CloseClipboard` |
-| **clipboard_util** | `ui/base/clipboard/clipboard_util_win.cc` | Win32 clipboard utility helpers (e.g., `GetFilenames`) |
+| `ui/base/clipboard/clipboard_win.cc` | Platform clipboard (Windows) | New async override + refactored internal helper |
+| `ui/base/clipboard/clipboard_win.h` | Platform clipboard header | New method declarations |
+| `ui/base/clipboard/clipboard.h` | Cross-platform clipboard base | Defines virtual `ReadFilenames` (async) — **not modified** |
+| `base::ThreadPool` | Threading infrastructure | Used as execution context for blocking work |
+| `ScopedClipboard` / Win32 API | OS integration | Acquired on thread-pool thread instead of UI thread |
 
-### 2.2 Architectural Fit
-
-This CL is part of a systematic effort to convert synchronous clipboard read methods in `ClipboardWin` to async versions. The base `Clipboard` class already declares async virtual overrides (with callback parameters) alongside the legacy synchronous versions. This CL provides the Windows-specific implementation of the async `ReadFilenames` override, following the established pattern from the `ReadHTML` migration.
-
-### 2.3 Component Diagram
+### Component Diagram
 
 ```mermaid
 graph TB
-    subgraph "UI Thread"
-        A[Web Content / Renderer]
-        B[ClipboardHost Mojo Interface]
-        C["ClipboardWin::ReadFilenames(callback)"]
-        D["ClipboardWin::ReadAsync()"]
+    subgraph "Browser Process - UI Thread"
+        Caller["Caller<br/>(e.g. DataTransferPolicyController,<br/>ClipboardHostImpl)"]
+        CWin_Async["ClipboardWin::ReadFilenames<br/>(async override)"]
+        ReadAsync["ClipboardWin::ReadAsync&lt;T&gt;"]
     end
 
-    subgraph "ThreadPool (MayBlock)"
-        E["ClipboardWin::ReadFilenamesInternal(buffer, hwnd)"]
-        F["ScopedClipboard::Acquire(hwnd)"]
-        G["Win32 API: OpenClipboard / GetClipboardData"]
-        H["clipboard_util::GetFilenames()"]
+    subgraph "Browser Process - ThreadPool (MayBlock)"
+        Internal["ClipboardWin::ReadFilenamesInternal<br/>(static)"]
+        ScopedCB["ScopedClipboard::Acquire"]
+        Win32["Win32 API<br/>OpenClipboard / GetClipboardData /<br/>CloseClipboard"]
     end
 
-    subgraph "UI Thread (callback)"
-        I["ReadFilenamesCallback invoked"]
-        J["Consumer receives std::vector&lt;ui::FileInfo&gt;"]
+    subgraph "Browser Process - UI Thread (callback)"
+        Callback["ReadFilenamesCallback<br/>(std::vector&lt;ui::FileInfo&gt;)"]
     end
 
-    A -->|"Paste / DataTransfer"| B
-    B --> C
-    C --> D
-    D -->|"PostTask to ThreadPool"| E
-    E --> F
-    F --> G
-    G --> H
-    H -->|"result"| E
-    E -->|"PostTask back to origin"| I
-    I --> J
+    Caller -->|"ReadFilenames(buffer, data_dst, callback)"| CWin_Async
+    CWin_Async -->|"ReadAsync(BindOnce(ReadFilenamesInternal, buffer), callback)"| ReadAsync
+    ReadAsync -->|"PostTask to ThreadPool"| Internal
+    Internal --> ScopedCB
+    ScopedCB --> Win32
+    Internal -->|"returns std::vector&lt;FileInfo&gt;"| Callback
+    Callback -->|"Invoked on original sequence"| Caller
 
-    style C fill:#f9f,stroke:#333,stroke-width:2px
-    style E fill:#bbf,stroke:#333,stroke-width:2px
-    style G fill:#fbb,stroke:#333,stroke-width:2px
+    style CWin_Async fill:#e1f5fe
+    style Internal fill:#fff3e0
+    style Callback fill:#e8f5e9
 ```
+
+### How It Fits into the Existing Architecture
+
+Chromium's `Clipboard` base class (`ui/base/clipboard/clipboard.h`) defines both synchronous and asynchronous virtual methods for each clipboard format. The synchronous methods use output parameters (pointers), while async methods accept a callback. Platform implementations (`ClipboardWin`, `ClipboardX11`, `ClipboardOzone`, etc.) override the relevant methods. `ClipboardWin` already has a `ReadAsync<T>` template helper (used by `ReadText`, `ReadHTML`, `ReadPng`, etc.) that:
+
+1. Captures the `HWND` clipboard window handle.
+2. Posts the blocking work to a `SequencedTaskRunner` with `MayBlock`.
+3. Posts the result back to the caller's sequence via the callback.
+
+This CL extends that existing pattern to `ReadFilenames`, making it consistent with other already-async-ified read methods.
 
 ---
 
 ## 3. Design Goals & Non-Goals
 
-### 3.1 Goals
+### Goals
 
-1. **Eliminate UI-thread blocking** — Move the entire Win32 clipboard interaction for `ReadFilenames` off the UI thread to prevent jank and hangs.
-2. **Follow established pattern** — Reuse the `ReadAsync` template mechanism introduced in [CL 7151578](https://chromium-review.googlesource.com/c/chromium/src/+/7151578) (ReadHTML async) and simplified in [CL 7565599](https://chromium-review.googlesource.com/c/chromium/src/+/7565599) (ReadAsync template simplification), ensuring consistency across clipboard read methods.
-3. **Maintain backward compatibility** — The synchronous `ReadFilenames(buffer, data_dst, result*)` remains functional by delegating to the same `ReadFilenamesInternal` static helper, ensuring legacy callers are unaffected.
-4. **Test coverage** — Add unit tests for the new async path covering both non-empty and empty clipboard scenarios.
+| # | Goal |
+|---|------|
+| G1 | **Move blocking Win32 clipboard I/O off the UI thread** for `ReadFilenames`, preventing jank. |
+| G2 | **Follow the established `ReadAsync` pattern** used by `ReadText`, `ReadHTML`, `ReadPng`, `ReadBitmap`, etc. for consistency. |
+| G3 | **Preserve the synchronous `ReadFilenames`** for callers that still need it (backward compatibility). |
+| G4 | **Refactor the implementation into a `static` helper** (`ReadFilenamesInternal`) to maximize code reuse between sync and async paths. |
+| G5 | **Add unit test coverage** for the new async path, including both non-empty and empty clipboard scenarios. |
 
-### 3.2 Non-Goals
+### Non-Goals
 
-1. **Async migration of other read methods** — This CL only addresses `ReadFilenames`; other methods (`ReadAvailableTypes`, `ReadBookmark`, etc.) are out of scope.
-2. **Removing the synchronous overload** — The legacy sync `ReadFilenames` is preserved for callers that haven't migrated.
-3. **Cross-platform changes** — Only the Windows implementation is affected; other platforms' clipboard implementations are untouched.
-4. **Clipboard write path changes** — Write operations are not modified by this CL.
-5. **HWND dependency removal for ReadFilenames** — Unlike the `ReadHTML` CL which noted that HWND may not be required, this CL still passes `GetClipboardWindow()` as the `owner_window` parameter. Investigating whether HWND can be eliminated is deferred.
+| # | Non-Goal |
+|---|----------|
+| NG1 | **Removing the synchronous `ReadFilenames` override** — both sync and async paths coexist. |
+| NG2 | **Changing other platform implementations** (X11, Ozone, Mac, etc.). |
+| NG3 | **Changing callers** to switch from sync to async — that is a separate effort. |
+| NG4 | **Modifying the `ReadAsync` template itself** or the thread-pool configuration. |
+| NG5 | **Adding async support for `ReadAvailableTypes`** or other not-yet-async methods. |
 
 ---
 
 ## 4. System Interactions
 
-### 4.1 Interaction Flow
-
-The async `ReadFilenames` method is invoked from the UI thread (typically via `ClipboardHost` Mojo interface from a renderer process requesting paste data). The method uses `ReadAsync` to post the blocking work to a ThreadPool worker, and the result is posted back to the calling sequence via the provided callback.
-
-### 4.2 Sequence Diagram — Async ReadFilenames
-
-```mermaid
-sequenceDiagram
-    participant Renderer as Renderer Process
-    participant CH as ClipboardHost (Browser, UI Thread)
-    participant CW as ClipboardWin (UI Thread)
-    participant RA as ReadAsync Helper
-    participant TP as ThreadPool Worker (MayBlock)
-    participant Win32 as Win32 Clipboard API
-
-    Renderer->>CH: ReadFilenames() via Mojo IPC
-    CH->>CW: ReadFilenames(buffer, data_dst, callback)
-    CW->>RA: ReadAsync(BindOnce(ReadFilenamesInternal, buffer), callback)
-    RA->>RA: Capture owner_window = GetClipboardWindow()
-    RA->>TP: PostTask(ReadFilenamesInternal(buffer, owner_window))
-
-    Note over TP: Runs on ThreadPool (MayBlock)
-    TP->>Win32: ScopedClipboard::Acquire(owner_window)
-    Win32-->>TP: Clipboard handle (may block)
-    TP->>Win32: GetClipboardData(CF_HDROP)
-    Win32-->>TP: HDROP / filename data
-    TP->>TP: Parse filenames → std::vector<FileInfo>
-
-    TP->>CW: PostTask back to origin sequence
-    CW->>CH: Invoke callback(std::vector<FileInfo>)
-    CH->>Renderer: Return filenames via Mojo
-```
-
-### 4.3 Sequence Diagram — Synchronous ReadFilenames (Legacy, preserved)
+### Main Flow: Async ReadFilenames
 
 ```mermaid
 sequenceDiagram
     participant Caller as Caller (UI Thread)
     participant CW as ClipboardWin
-    participant Internal as ReadFilenamesInternal (static)
-    participant Win32 as Win32 Clipboard API
+    participant RA as ReadAsync<vector<FileInfo>>
+    participant TP as ThreadPool (MayBlock)
+    participant RFI as ReadFilenamesInternal (static)
+    participant SC as ScopedClipboard
+    participant W32 as Win32 Clipboard API
+
+    Caller->>CW: ReadFilenames(buffer, data_dst, callback)
+    CW->>RA: ReadAsync(BindOnce(ReadFilenamesInternal, buffer), callback)
+    RA->>RA: Capture HWND via GetClipboardWindow()
+    RA->>TP: PostTask(ReadFilenamesInternal, buffer, hwnd)
+    Note over TP: Runs on thread-pool sequence
+
+    TP->>RFI: ReadFilenamesInternal(buffer, owner_window)
+    RFI->>RFI: DCHECK_EQ(buffer, kCopyPaste)
+    RFI->>RFI: RecordRead(kFilenames)
+    RFI->>RFI: ReadFilenamesAvailable()
+    alt Filenames not available
+        RFI-->>TP: return empty vector
+    else Filenames available
+        RFI->>SC: Acquire(owner_window)
+        SC->>W32: OpenClipboard(owner_window)
+        W32-->>SC: success/fail
+        alt Acquire failed
+            RFI-->>TP: return empty vector
+        else Acquire succeeded
+            RFI->>W32: GetClipboardData(CF_HDROP)
+            W32-->>RFI: HANDLE data
+            RFI->>RFI: Parse HDROP / FileNameW / FileNameA
+            RFI->>RFI: Build vector<FileInfo>
+            Note over SC: ~ScopedClipboard calls CloseClipboard
+            RFI-->>TP: return vector<FileInfo>
+        end
+    end
+
+    TP->>Caller: PostTask(callback, result) on original sequence
+    Caller->>Caller: Process file list
+```
+
+### Synchronous Fallback Flow
+
+```mermaid
+sequenceDiagram
+    participant Caller as Caller (UI Thread)
+    participant CW as ClipboardWin::ReadFilenames (sync)
+    participant RFI as ReadFilenamesInternal (static)
 
     Caller->>CW: ReadFilenames(buffer, data_dst, &result)
     CW->>CW: CHECK(result), result->clear()
-    CW->>Internal: ReadFilenamesInternal(buffer, GetClipboardWindow())
-    Internal->>Win32: ScopedClipboard::Acquire(owner_window)
-    Win32-->>Internal: Clipboard handle (blocks UI thread!)
-    Internal->>Win32: GetClipboardData(CF_HDROP / CF_FILENAME / CF_FILENAMEA)
-    Win32-->>Internal: Data
-    Internal-->>CW: std::vector<FileInfo>
+    CW->>RFI: ReadFilenamesInternal(buffer, GetClipboardWindow())
+    RFI-->>CW: vector<FileInfo>
     CW->>CW: *result = returned vector
-    CW-->>Caller: Return (result populated)
+    CW-->>Caller: return (result populated)
 ```
 
-### 4.4 Mojo/IPC Interaction
+### IPC / Mojo Interactions
 
-The clipboard read path is typically invoked via `blink::mojom::ClipboardHost` IPC from the renderer process. The Mojo interface calls into `ClipboardHostImpl` in the browser process, which then calls `Clipboard::ReadFilenames`. With this CL, the Windows implementation can now use the async overload, allowing the browser-side Mojo handler to return without blocking the UI thread.
+This CL does **not** directly modify any Mojo interfaces. However, the `ReadFilenames` methods are typically invoked by `ClipboardHostImpl` (in `content/browser/clipboard/clipboard_host_impl.cc`) which handles Mojo IPC from renderer-process `blink::ClipboardHost`. The async path allows `ClipboardHostImpl` to avoid blocking the browser-process IO/UI thread when servicing renderer clipboard requests, though the switch from sync to async at the call-site is outside the scope of this CL.
 
 ---
 
 ## 5. API & Interface Changes
 
-### 5.1 New Public Interfaces
+### New Public Interface
 
-| Method | Signature | Description |
-|---|---|---|
-| `ClipboardWin::ReadFilenames` (async override) | `void ReadFilenames(ClipboardBuffer buffer, const std::optional<DataTransferEndpoint>& data_dst, ReadFilenamesCallback callback) const override` | New async overload that offloads clipboard access to ThreadPool and returns result via callback. Declared at `ui/base/clipboard/clipboard_win.h` ~L62. |
+| Method | Signature | Location |
+|--------|-----------|----------|
+| `ClipboardWin::ReadFilenames` (async override) | `void ReadFilenames(ClipboardBuffer buffer, const std::optional<DataTransferEndpoint>& data_dst, ReadFilenamesCallback callback) const override` | `ui/base/clipboard/clipboard_win.h` line ~62 |
 
-### 5.2 New Internal Interfaces
+This overrides the virtual method declared in `Clipboard` base class. The callback type is `ReadFilenamesCallback` which is `base::OnceCallback<void(std::vector<ui::FileInfo>)>`.
 
-| Method | Signature | Description |
-|---|---|---|
-| `ClipboardWin::ReadFilenamesInternal` | `static std::vector<ui::FileInfo> ReadFilenamesInternal(ClipboardBuffer buffer, HWND owner_window)` | Static helper extracted from the former `ReadFilenames` body. Can run on any thread. Declared at `ui/base/clipboard/clipboard_win.h` ~L147. |
+### New Private/Static Interface
 
-### 5.3 Modified Interfaces
+| Method | Signature | Location |
+|--------|-----------|----------|
+| `ClipboardWin::ReadFilenamesInternal` (static) | `static std::vector<ui::FileInfo> ReadFilenamesInternal(ClipboardBuffer buffer, HWND owner_window)` | `ui/base/clipboard/clipboard_win.h` line ~147 |
 
-| Method | Change |
-|---|---|
-| `ClipboardWin::ReadFilenames` (sync) | Now delegates to `ReadFilenamesInternal` instead of containing the implementation inline. Adds `CHECK(result)` (upgraded from `DCHECK`). Behavior is unchanged for callers. |
+This is a `static` method because it is posted to a thread-pool task runner and must not capture `this` (the `ClipboardWin` instance may not be alive when the task runs, and `Clipboard` instances are thread-affine).
 
-### 5.4 Deprecated Interfaces
+### Modified Interfaces
 
-None. The synchronous overload is preserved for backward compatibility.
+| Method | Change | Location |
+|--------|--------|----------|
+| `ClipboardWin::ReadFilenames` (sync) | Refactored to delegate to `ReadFilenamesInternal`; `DCHECK` on `result` upgraded to `CHECK`; `DCHECK_EQ` on buffer moved into internal helper | `ui/base/clipboard/clipboard_win.cc` line ~681 |
+
+### Deprecated Interfaces
+
+None. The synchronous `ReadFilenames` remains available and functional.
 
 ---
 
 ## 6. Dependencies
 
-### 6.1 What This Code Depends On
+### What This Code Depends On
 
-| Dependency | Description |
-|---|---|
-| **`ClipboardWin::ReadAsync`** | Template method (introduced/simplified in [CL 7565599](https://chromium-review.googlesource.com/c/chromium/src/+/7565599)) that handles posting work to `ThreadPool` and returning results via callback. |
-| **`base::ThreadPool`** | Used (indirectly via `ReadAsync`) to run `ReadFilenamesInternal` on a worker thread with `MayBlock` trait. |
-| **`ScopedClipboard`** | RAII wrapper for Win32 clipboard open/close. |
-| **`clipboard_util::GetFilenames`** | Parses `HDROP` data into a list of filenames. |
-| **`ReadFilenamesAvailable()`** | Static check for whether the clipboard contains filename-type data. |
-| **Win32 API** | `OpenClipboard`, `GetClipboardData`, `CloseClipboard`, `DragQueryFile`. |
-| **[CL 7151578](https://chromium-review.googlesource.com/c/chromium/src/+/7151578)** | Parent CL that introduced the `ReadAsync` pattern for `ReadHTML`. MERGED. |
-| **[CL 7565599](https://chromium-review.googlesource.com/c/chromium/src/+/7565599)** | Sibling CL that simplified the `ReadAsync` template to return a single result object. MERGED. |
+| Dependency | Role | Notes |
+|------------|------|-------|
+| `Clipboard` base class (`ui/base/clipboard/clipboard.h`) | Defines virtual `ReadFilenames` (async) and `ReadFilenamesCallback` | Must declare the async virtual; already done in prior CLs |
+| `ClipboardWin::ReadAsync<T>` template | Schedules work on thread pool, posts result back | Already exists; used by `ReadText`, `ReadHTML`, etc. |
+| `base::ThreadPool` | Provides `SequencedTaskRunner` with `MayBlock` | Standard Chromium threading primitive |
+| `ScopedClipboard` | RAII wrapper for `OpenClipboard`/`CloseClipboard` | Existing Win32 integration class |
+| `clipboard_util::GetFilenames` | Parses `HDROP` into filename list | Existing utility |
+| `ReadFilenamesAvailable()` (static) | Checks if clipboard contains filename formats | Existing static helper |
+| Win32 API (`OpenClipboard`, `GetClipboardData`, `CloseClipboard`) | OS clipboard access | Blocking system calls — the reason for async |
 
-### 6.2 What Depends on This Code
+### What Depends on This Code
 
-| Dependent | Description |
-|---|---|
-| **`ClipboardHostImpl`** | Browser-side Mojo handler that calls `Clipboard::ReadFilenames`; can now use the async overload. |
-| **`DataTransferAccessPolicy`** | Enterprise clipboard policies that inspect clipboard data. |
-| **Web Platform** | `navigator.clipboard.read()`, `paste` event, Drag & Drop file paste — all may trigger `ReadFilenames`. |
-| **Other platform clipboard implementations** | Must implement the same async virtual override if they wish to provide non-blocking reads (not affected by this CL). |
+| Dependent | Relationship | Notes |
+|-----------|-------------|-------|
+| `ClipboardHostImpl` (`content/browser/clipboard/`) | Calls `Clipboard::ReadFilenames` | Can switch to async override in follow-up CLs |
+| `DataTransferPolicyController` | May call `ReadFilenames` for DLP checks | Sync path still available |
+| `ClipboardWinTest` (unit tests) | Directly tests async and sync paths | Modified in this CL |
+| Other async clipboard consumers (e.g. `ReadText`, `ReadHTML` callers) | Share the `ReadAsync` infrastructure | No change to their behavior |
 
-### 6.3 Version/Compatibility Considerations
+### Version / Compatibility
 
-- The `ReadFilenamesCallback` type and async virtual overload must already exist in the `Clipboard` base class (they do, as established by the ReadHTML CL series).
-- This CL rebases on top of the merged [CL 7565599](https://chromium-review.googlesource.com/c/chromium/src/+/7565599) which simplified `ReadAsync`.
+- No feature flags or version gates. The async override is always available once compiled.
+- The sync override is preserved, so no caller migration is forced.
+- The `ReadFilenamesCallback` type must already be defined in the base `Clipboard` class (prerequisite satisfied by parent CLs in the series).
 
 ---
 
 ## 7. Risks & Mitigations
 
-### 7.1 Potential Issues
+### Risk Assessment
 
-| Risk | Severity | Mitigation |
-|---|---|---|
-| **Clipboard data changes between `GetClipboardWindow()` capture and actual read** | Low | `GetClipboardWindow()` returns a stable per-thread HWND. The clipboard sequence number can change, but this is the same race that exists in the synchronous path. The `ScopedClipboard::Acquire` call will atomically lock the clipboard. |
-| **`ReadFilenamesAvailable()` called on ThreadPool but may access clipboard state** | Medium | `ReadFilenamesAvailable()` is a static check on registered clipboard format types and does not call `OpenClipboard`. It should be safe to call from any thread. However, this should be verified — if it peeks at clipboard contents, it could race. |
-| **Thread-safety of `RecordRead()`** | Low | `RecordRead` records UMA metrics. UMA histogram operations are typically thread-safe in Chromium. |
-| **Lifetime of callback / weak pointers** | Low | `ReadAsync` handles the posting pattern, ensuring the callback runs on the original sequence. If the `Clipboard` instance is destroyed, the weak pointer check in `ReadAsync` will drop the callback. |
-| **`GetClipboardDataWithLimit` and global state** | Low | This function calls `::GetClipboardData` which requires the clipboard to be open. Since `ScopedClipboard::Acquire` is called in the same scope, this is safe. |
+| # | Risk | Severity | Likelihood | Mitigation |
+|---|------|----------|------------|------------|
+| R1 | **Thread-safety of `ReadFilenamesAvailable()`** — called from thread pool but checks global clipboard format state using `IsClipboardFormatAvailable` (Win32 API). | Medium | Low | `IsClipboardFormatAvailable` is documented as thread-safe by Microsoft; it does not require `OpenClipboard`. The existing `ReadText`/`ReadHTML` async paths already call similar static helpers from the thread pool. |
+| R2 | **`RecordRead` (metrics) called off UI thread** — `RecordRead` is a static method that records UMA histograms. If it assumes UI-thread execution, this could be problematic. | Low | Low | UMA histogram recording in Chromium is thread-safe. Other async read methods (`ReadText`, `ReadHTML`) already call `RecordRead` from the thread pool. |
+| R3 | **HWND lifetime** — `GetClipboardWindow()` returns an `HWND` that is captured and used on the thread pool. If the window is destroyed between capture and use, `OpenClipboard` will fail. | Low | Very Low | `ScopedClipboard::Acquire` handles `OpenClipboard` failure gracefully (returns empty result). The clipboard window is long-lived (tied to `ClipboardWin` instance lifetime). This is the same pattern used by all other async clipboard reads. |
+| R4 | **Clipboard contention** — `OpenClipboard` may block if another application holds the clipboard lock. | Medium | Medium | This is exactly the scenario this CL addresses — by moving the blocking call to a thread pool, contention no longer blocks the UI thread. The `MayBlock` trait ensures the thread pool accommodates blocking. |
+| R5 | **Behavior divergence between sync and async paths** — if one path has a bug the other doesn't. | Low | Low | Both paths now share `ReadFilenamesInternal`, ensuring identical parsing logic. The sync path calls it directly; the async path posts it to the thread pool. |
 
-### 7.2 Backward Compatibility
+### Backward Compatibility
 
-- **Fully backward compatible.** The synchronous `ReadFilenames(buffer, data_dst, result*)` overload is preserved and now delegates to the same `ReadFilenamesInternal` helper.
-- Callers using the synchronous API are unaffected.
-- Callers can opt in to the async API by using the callback-based overload.
+- **Full backward compatibility.** The synchronous `ReadFilenames` overload is preserved and unchanged in behavior (it now delegates to the same `ReadFilenamesInternal` helper).
+- No callers are forced to migrate; the async path is opt-in via the callback-based overload.
+- Minor change: `DCHECK(result)` upgraded to `CHECK(result)` in the sync path — this is strictly stricter and only crashes in cases that were already undefined behavior (null pointer dereference).
 
-### 7.3 Migration Strategy
+### Migration Strategy
 
-No migration is needed. Both sync and async overloads coexist. Over time, callers (e.g., `ClipboardHostImpl`) should migrate to the async overload to realize the jank-free benefits. The sync overload can be deprecated once all callers have migrated.
+No migration needed for this CL. Callers can optionally adopt the async `ReadFilenames` override at their discretion in follow-up CLs. This CL is part of a broader series that async-ifies all `ClipboardWin` read methods (see parent CLs for `ReadText`, `ReadHTML`, `ReadPng`, `ReadBitmap`, etc.).
 
 ---
 
 ## 8. Testing Strategy
 
-### 8.1 New Tests Added
+### Tests Added in This CL
 
-| Test | File | Description |
-|---|---|---|
-| `ReadFilenamesAsyncReturnsWrittenData` | `ui/base/clipboard/clipboard_win_unittest.cc` | Writes a file path to the clipboard via `ScopedClipboardWriter::WriteFilenames`, then reads it back using the async `ReadFilenames` overload. Verifies the returned `FileInfo` matches the written path. |
-| `ReadFilenamesAsyncEmptyClipboard` | `ui/base/clipboard/clipboard_win_unittest.cc` | Clears the clipboard, then invokes async `ReadFilenames`. Verifies the result is empty. |
-| Existing `ClipboardWinTest` (augmented) | `ui/base/clipboard/clipboard_win_unittest.cc` | The existing `NoDataChangedEventOnRead` test is augmented to also call the async `ReadFilenames` overload, verifying it does not trigger spurious clipboard-change notifications. |
+| Test | File | Purpose |
+|------|------|---------|
+| `ReadFilenamesAsyncReturnsWrittenData` | `ui/base/clipboard/clipboard_win_unittest.cc` | Writes a filename to the clipboard via `ScopedClipboardWriter`, then reads it back via the async `ReadFilenames` and verifies the file path matches. |
+| `ReadFilenamesAsyncEmptyClipboard` | `ui/base/clipboard/clipboard_win_unittest.cc` | Clears the clipboard, calls async `ReadFilenames`, and verifies the result is an empty vector. |
+| `ClipboardWinDataChangedTest` (modified) | `ui/base/clipboard/clipboard_win_unittest.cc` | Extended to also call the async `ReadFilenames` and verify that `data_changed_count()` remains 0 (no spurious change notifications). |
 
-### 8.2 Test Coverage Assessment
+### Test Coverage Assessment
 
-| Scenario | Covered? |
-|---|---|
-| Async read with valid file data | ✅ `ReadFilenamesAsyncReturnsWrittenData` |
-| Async read with empty clipboard | ✅ `ReadFilenamesAsyncEmptyClipboard` |
-| Sync read still works (legacy) | ✅ Existing tests remain |
-| No data-changed event on async read | ✅ `NoDataChangedEventOnRead` augmented |
-| Multiple files on clipboard | ❌ Not explicitly tested (single file only) |
-| CF_FILENAME / CF_FILENAMEA formats | ❌ Not tested (only CF_HDROP path tested via `WriteFilenames`) |
-| Clipboard owner hung / delayed render | ❌ Difficult to test in unit tests; covered by the `MayBlock` trait allowing the thread pool to handle blocking gracefully |
-| Callback invoked on correct sequence | ✅ Implicitly tested via `TestFuture` + single-threaded `TaskEnvironment` |
+| Scenario | Covered? | Notes |
+|----------|----------|-------|
+| Async read with data present | ✅ | `ReadFilenamesAsyncReturnsWrittenData` |
+| Async read with empty clipboard | ✅ | `ReadFilenamesAsyncEmptyClipboard` |
+| Sync read (regression) | ✅ | Existing tests (not modified) continue to exercise the sync path |
+| No spurious data-changed events | ✅ | Extended `ClipboardWinDataChangedTest` |
+| Multiple filenames (HDROP with >1 file) | ❌ | Not explicitly tested — could be a follow-up |
+| `CF_FileNameW` / `CF_FileNameA` format paths | ❌ | Not explicitly tested — existing sync tests may cover this |
+| Clipboard acquisition failure | ❌ | Not tested (hard to simulate Win32 contention in unit tests) |
 
-### 8.3 CI Validation
+### Test Infrastructure
 
-The CL has passed dry-run on Chromium's CI (LUCI CQ) across multiple patch sets, including Windows trybots which exercise these tests.
-
----
-
-## 9. Relationship to Referenced CLs
-
-```mermaid
-graph LR
-    A["CL 7151578<br/><b>ReadHTML async</b><br/>(MERGED)"] -->|"Introduced ReadAsync pattern<br/>+ ReadHTMLInternal"| B["CL 7565599<br/><b>Simplify ReadAsync template</b><br/>(MERGED)"]
-    B -->|"Simplified template to return<br/>single result object"| C["CL 7556734<br/><b>ReadFilenames async</b><br/>(THIS CL)"]
-    
-    style A fill:#9f9,stroke:#333
-    style B fill:#9f9,stroke:#333
-    style C fill:#ff9,stroke:#333
-```
-
-| CL | Title | Status | Relationship |
-|---|---|---|---|
-| [7151578](https://chromium-review.googlesource.com/c/chromium/src/+/7151578) | [Clipboard][Windows] Use async ReadHTML with ThreadPool offloading | **MERGED** | Introduced the `ReadAsync` pattern and `ReadHTMLInternal` static helper. This CL follows the exact same pattern for `ReadFilenames`. |
-| [7565599](https://chromium-review.googlesource.com/c/chromium/src/+/7565599) | [Clipboard][Windows] Simplify ReadAsync template | **MERGED** | Simplified the `ReadAsync` template to accept functions returning a single result object instead of tuples. This CL depends on this simplification (e.g., `ReadFilenamesInternal` returns `std::vector<ui::FileInfo>` directly). |
-| **7556734** | [Clipboard][Windows] Use async ReadFileNames with ThreadPool offloading | **NEW** | **This CL** — applies the pattern to `ReadFilenames`. |
+Tests use `base::test::TaskEnvironment` (with `MOCK_TIME` trait via the test fixture) to support async callback execution, and `base::test::TestFuture<>` to synchronously wait for async results in the test. `base::ScopedAllowBlockingForTesting` is used where filesystem operations are needed for temp file creation.
 
 ---
 
-## 10. Summary of Changes by File
+## Appendix: Code References
 
-### `ui/base/clipboard/clipboard_win.h` (+5 lines)
-
-- Declares the async `ReadFilenames` override (callback-based, with `std::optional<DataTransferEndpoint>&`).
-- Declares `static ReadFilenamesInternal(ClipboardBuffer, HWND)` returning `std::vector<ui::FileInfo>`.
-
-### `ui/base/clipboard/clipboard_win.cc` (+33/-11 lines)
-
-- **New async `ReadFilenames`** (~L424): Calls `ReadAsync(BindOnce(ReadFilenamesInternal, buffer), callback)`.
-- **Refactored sync `ReadFilenames`** (~L681): Now delegates to `ReadFilenamesInternal`, with `CHECK(result)` upgrade.
-- **New `ReadFilenamesInternal`** (~L687): Static method containing the original clipboard-reading logic, returning `std::vector<ui::FileInfo>` by value. Uses `owner_window` parameter instead of `GetClipboardWindow()` member call, enabling thread-pool execution.
-- Minor style improvements: `push_back` → `emplace_back`, braces added to single-line `if` blocks.
-
-### `ui/base/clipboard/clipboard_win_unittest.cc` (+45 lines)
-
-- Adds includes for file path utilities and `FileInfo`.
-- Augments `NoDataChangedEventOnRead` test with async `ReadFilenames` call.
-- Adds `ReadFilenamesAsyncReturnsWrittenData` test.
-- Adds `ReadFilenamesAsyncEmptyClipboard` test.
+| File | Key Lines | Description |
+|------|-----------|-------------|
+| `ui/base/clipboard/clipboard_win.cc` | ~424–433 | New async `ReadFilenames` override |
+| `ui/base/clipboard/clipboard_win.cc` | ~681–690 | Refactored sync `ReadFilenames` (delegates to internal) |
+| `ui/base/clipboard/clipboard_win.cc` | ~693–750 | `ReadFilenamesInternal` static helper |
+| `ui/base/clipboard/clipboard_win.h` | ~62–64 | Async override declaration |
+| `ui/base/clipboard/clipboard_win.h` | ~147–148 | `ReadFilenamesInternal` declaration |
+| `ui/base/clipboard/clipboard_win_unittest.cc` | ~178–210 | New async unit tests |
+| `ui/base/clipboard/clipboard_win_unittest.cc` | ~144–149 | Extended data-changed test |
