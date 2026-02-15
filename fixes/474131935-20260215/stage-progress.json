@@ -2,10 +2,10 @@
   "bug_folder": "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner",
   "bug_id": "474131935",
   "overall_status": "IN_PROGRESS",
-  "current_stage": 3,
+  "current_stage": 5,
   "total_stages": 11,
   "started_at": "2026-02-15T16:54:39.000409",
-  "updated_at": "2026-02-15T17:09:23.140562",
+  "updated_at": "2026-02-15T17:22:10.518491",
   "completed_at": null,
   "stages": {
     "0": {
@@ -55,6 +55,40 @@
       "model_output_summary": null,
       "outputs_created": [
         "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    },
+    "3": {
+      "stage_id": 3,
+      "stage_name": "hld",
+      "status": "completed",
+      "start_time": "2026-02-15T17:09:23.141399",
+      "end_time": "2026-02-15T17:14:41.926072",
+      "duration_seconds": 318.784673,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/outputs/stage03_hld_output_20260215_170923.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/prompts/stage03_hld_prompt_20260215_170923.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/03-architecture-hld.md"
+      ],
+      "skip_reason": null
+    },
+    "4": {
+      "stage_id": 4,
+      "stage_name": "lld",
+      "status": "completed",
+      "start_time": "2026-02-15T17:14:41.927598",
+      "end_time": "2026-02-15T17:22:10.517737",
+      "duration_seconds": 448.590139,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/outputs/stage04_lld_output_20260215_171441.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/prompts/stage04_lld_prompt_20260215_171441.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/04-architecture-lld.md"
       ],
       "skip_reason": null
     }
