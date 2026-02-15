@@ -1,0 +1,86 @@
+{
+  "bug_folder": "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner",
+  "bug_id": "474131935",
+  "overall_status": "IN_PROGRESS",
+  "current_stage": 3,
+  "total_stages": 11,
+  "started_at": "2026-02-15T16:54:39.000409",
+  "updated_at": "2026-02-15T17:09:23.140562",
+  "completed_at": null,
+  "stages": {
+    "0": {
+      "stage_id": 0,
+      "stage_name": "prerequisites",
+      "status": "skipped",
+      "start_time": "2026-02-15T17:02:09.264280",
+      "end_time": "2026-02-15T17:02:09.264370",
+      "duration_seconds": 0,
+      "attempts": 0,
+      "output_file": null,
+      "prompt_file": null,
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [],
+      "skip_reason": "All outputs already exist: llm_out/stage-progress.json"
+    },
+    "1": {
+      "stage_id": 1,
+      "stage_name": "platform_repro",
+      "status": "completed",
+      "start_time": "2026-02-15T17:02:09.265270",
+      "end_time": "2026-02-15T17:04:52.070936",
+      "duration_seconds": 162.805666,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/outputs/stage01_platform_repro_output_20260215_170209.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/prompts/stage01_platform_repro_prompt_20260215_170209.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/repro.html",
+        "llm_out/platform-check.json"
+      ],
+      "skip_reason": null
+    },
+    "2": {
+      "stage_id": 2,
+      "stage_name": "root_cause",
+      "status": "completed",
+      "start_time": "2026-02-15T17:04:52.072355",
+      "end_time": "2026-02-15T17:09:23.139921",
+      "duration_seconds": 271.067566,
+      "attempts": 1,
+      "output_file": "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/outputs/stage02_root_cause_output_20260215_170452.txt",
+      "prompt_file": "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/prompts/stage02_root_cause_prompt_20260215_170452.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    }
+  },
+  "platform_compatible": true,
+  "skip_remaining": false,
+  "skip_reason": null,
+  "model_used": "claude-opus-4.6",
+  "chromium_src": "/workspace/cr3/src",
+  "baseline_commit": "latest_main",
+  "build_folder": "release_x64",
+  "build_error_count": 0,
+  "last_build_error": null,
+  "pre_sanity_build": {
+    "success": true,
+    "build_type": "pre_sanity",
+    "start_time": "2026-02-15T16:54:39.000861",
+    "end_time": "2026-02-15T17:02:09.262848",
+    "duration_seconds": 404.223008358,
+    "exit_code": 0,
+    "log_file": "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/logs/build_pre_sanity_20260215_165439.log",
+    "error_message": null
+  },
+  "post_fix_build": null,
+  "fix_branch": "fix/474131935",
+  "skip_cl_upload": false,
+  "special_instructions": "Focus on how to make the clipboardHost mojom call between blink and browser process non-blocking on the UI thread, currently this freezes the renderer since it is a sync call. Think on how this can be fixed. Note in HLD top 5 approaches and the one recommneded approach (which is implemented)",
+  "include_explainer": true
+}
