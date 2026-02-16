@@ -1,0 +1,22 @@
+{
+  "cl_number": "7558493",
+  "overall_status": "COMPLETED",
+  "stages": {
+    "hld": {
+      "status": "COMPLETED",
+      "duration_seconds": 180.3
+    },
+    "lld": {
+      "status": "COMPLETED",
+      "duration_seconds": 140.2
+    },
+    "review": {
+      "status": "COMPLETED",
+      "duration_seconds": 130.2
+    },
+    "summary": {
+      "status": "COMPLETED",
+      "duration_seconds": 150.2
+    }
+  }
+}
