@@ -1,6 +1,6 @@
 {
   "cl_number": "7574178",
-  "overall_status": "IN_PROGRESS",
+  "overall_status": "COMPLETED",
   "stages": {
     "hld": {
       "status": "COMPLETED",
@@ -9,6 +9,14 @@
     "lld": {
       "status": "COMPLETED",
       "duration_seconds": 143.5
+    },
+    "review": {
+      "status": "COMPLETED",
+      "duration_seconds": 132.1
+    },
+    "summary": {
+      "status": "COMPLETED",
+      "duration_seconds": 148.7
     }
   }
 }
