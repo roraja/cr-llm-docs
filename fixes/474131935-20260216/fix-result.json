@@ -1,0 +1,189 @@
+{
+  "bug_id": "474131935",
+  "bug_folder": "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner",
+  "status": "FIXED",
+  "timestamp": "2026-02-15T20:55:00.000Z",
+  "baseline_commit": "latest_main",
+  "fix_branch": "fix/474131935_FIXED_TESTPASS",
+  "cl_uploaded": true,
+  "cl_url": "https://chromium-review.googlesource.com/c/chromium/src/+/7579673",
+  "build_directory": "/workspace/cr3/src/out/474131935",
+  "chrome_binary_path": "/workspace/cr3/src/out/474131935/chrome",
+  "files_modified": [
+    {
+      "path": "third_party/blink/public/mojom/clipboard/clipboard.mojom",
+      "change_type": "modify",
+      "lines_added": 43,
+      "lines_removed": 5
+    },
+    {
+      "path": "third_party/blink/renderer/core/clipboard/system_clipboard.cc",
+      "change_type": "modify",
+      "lines_added": 19,
+      "lines_removed": 8
+    },
+    {
+      "path": "third_party/blink/renderer/core/clipboard/system_clipboard.h",
+      "change_type": "modify",
+      "lines_added": 3,
+      "lines_removed": 0
+    },
+    {
+      "path": "third_party/blink/renderer/core/clipboard/system_clipboard_test.cc",
+      "change_type": "modify",
+      "lines_added": 88,
+      "lines_removed": 0
+    },
+    {
+      "path": "third_party/blink/renderer/modules/clipboard/clipboard_promise.cc",
+      "change_type": "modify",
+      "lines_added": 16,
+      "lines_removed": 6
+    },
+    {
+      "path": "third_party/blink/renderer/modules/clipboard/clipboard_promise.h",
+      "change_type": "modify",
+      "lines_added": 1,
+      "lines_removed": 0
+    },
+    {
+      "path": "third_party/blink/renderer/modules/clipboard/clipboard_reader.cc",
+      "change_type": "modify",
+      "lines_added": 7,
+      "lines_removed": 3
+    },
+    {
+      "path": "content/browser/renderer_host/clipboard_host_impl.cc",
+      "change_type": "modify",
+      "lines_added": 43,
+      "lines_removed": 0
+    },
+    {
+      "path": "content/browser/renderer_host/clipboard_host_impl.h",
+      "change_type": "modify",
+      "lines_added": 19,
+      "lines_removed": 0
+    },
+    {
+      "path": "content/browser/renderer_host/clipboard_host_impl_unittest.cc",
+      "change_type": "modify",
+      "lines_added": 79,
+      "lines_removed": 2
+    },
+    {
+      "path": "content/test/mock_clipboard_host.cc",
+      "change_type": "modify",
+      "lines_added": 43,
+      "lines_removed": 0
+    },
+    {
+      "path": "content/test/mock_clipboard_host.h",
+      "change_type": "modify",
+      "lines_added": 19,
+      "lines_removed": 0
+    },
+    {
+      "path": "content/web_test/renderer/test_runner.cc",
+      "change_type": "modify",
+      "lines_added": 1,
+      "lines_removed": 1
+    },
+    {
+      "path": "third_party/blink/renderer/core/testing/mock_clipboard_host.cc",
+      "change_type": "modify",
+      "lines_added": 43,
+      "lines_removed": 0
+    },
+    {
+      "path": "third_party/blink/renderer/core/testing/mock_clipboard_host.h",
+      "change_type": "modify",
+      "lines_added": 19,
+      "lines_removed": 0
+    }
+  ],
+  "tests_added": [
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/clipboard/system_clipboard_test.cc",
+      "test_name": "SystemClipboardTest.Bug474131935_ReadPngAsync",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/clipboard/system_clipboard_test.cc",
+      "test_name": "SystemClipboardTest.Bug474131935_ReadPngAsyncWithUnboundHost",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/clipboard/system_clipboard_test.cc",
+      "test_name": "SystemClipboardTest.Bug474131935_ReadPngAsyncEmpty",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "content/browser/renderer_host/clipboard_host_impl_unittest.cc",
+      "test_name": "ClipboardHostImplTest.Bug474131935_SyncReadTextReturnsCorrectData",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "content/browser/renderer_host/clipboard_host_impl_unittest.cc",
+      "test_name": "ClipboardHostImplTest.Bug474131935_SyncReadHtmlReturnsCorrectData",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "content/browser/renderer_host/clipboard_host_impl_unittest.cc",
+      "test_name": "ClipboardHostImplTest.Bug474131935_SyncReadPngReturnsCorrectData",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "content/browser/renderer_host/clipboard_host_impl_unittest.cc",
+      "test_name": "ClipboardHostImplTest.Bug474131935_SyncReadAvailableCustomAndStandardFormats",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    }
+  ],
+  "tdd_verification": {
+    "tests_created_before_fix": true,
+    "tests_failed_before_fix": true,
+    "tests_passed_after_fix": true
+  },
+  "cq_dry_run": {
+    "triggered": true,
+    "status": "PENDING",
+    "url": "https://chromium-review.googlesource.com/c/chromium/src/+/7579673"
+  },
+  "verification": {
+    "build_passed": true,
+    "unit_tests_passed": true,
+    "web_tests_passed": true,
+    "manual_verification_passed": true,
+    "code_review_passed": true
+  },
+  "documentation_files": [
+    "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/01-fix-assessment.md",
+    "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/02-fix-implementation.md",
+    "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/03-architecture-hld.md",
+    "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/04-architecture-lld.md",
+    "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/05-tdd-tests.md",
+    "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/06-fix-changes.md",
+    "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/07-build-results.md",
+    "/home/roraja/src/chromium-docs/active/474131935-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/08-code-review.md"
+  ],
+  "next_steps": [
+    "Wait for CQ dry run",
+    "Add reviewers",
+    "Address feedback",
+    "Land the change"
+  ],
+  "notes": "Phase 1 fix: unblocks renderer main thread. Browser UI thread still blocks on OS clipboard calls (Phase 2 future work)."
+}
