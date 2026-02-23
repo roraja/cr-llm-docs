@@ -1,0 +1,216 @@
+{
+  "bug_folder": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans",
+  "bug_id": "40848794",
+  "overall_status": "COMPLETED",
+  "current_stage": 9,
+  "total_stages": 10,
+  "started_at": "2026-02-23T10:28:08.027253",
+  "updated_at": "2026-02-23T10:52:07.709675",
+  "completed_at": "2026-02-23T10:52:07.709627",
+  "stages": {
+    "0": {
+      "stage_id": 0,
+      "stage_name": "prerequisites",
+      "status": "skipped",
+      "start_time": "2026-02-23T10:28:35.043554",
+      "end_time": "2026-02-23T10:28:35.043670",
+      "duration_seconds": 0,
+      "attempts": 0,
+      "output_file": null,
+      "prompt_file": null,
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [],
+      "skip_reason": "All outputs already exist: llm_out/stage-progress.json"
+    },
+    "1": {
+      "stage_id": 1,
+      "stage_name": "platform_repro",
+      "status": "completed",
+      "start_time": "2026-02-23T10:28:35.044928",
+      "end_time": "2026-02-23T10:34:20.888243",
+      "duration_seconds": 345.843315,
+      "attempts": 1,
+      "output_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/outputs/stage01_platform_repro_output_20260223_102835.txt",
+      "prompt_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/prompts/stage01_platform_repro_prompt_20260223_102835.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/repro.html",
+        "llm_out/platform-check.json"
+      ],
+      "skip_reason": null
+    },
+    "2": {
+      "stage_id": 2,
+      "stage_name": "root_cause",
+      "status": "completed",
+      "start_time": "2026-02-23T10:34:20.890765",
+      "end_time": "2026-02-23T10:38:12.672613",
+      "duration_seconds": 231.781848,
+      "attempts": 1,
+      "output_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/outputs/stage02_root_cause_output_20260223_103420.txt",
+      "prompt_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/prompts/stage02_root_cause_prompt_20260223_103420.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    },
+    "3": {
+      "stage_id": 3,
+      "stage_name": "hld",
+      "status": "completed",
+      "start_time": "2026-02-23T10:38:12.674327",
+      "end_time": "2026-02-23T10:39:43.990834",
+      "duration_seconds": 91.316507,
+      "attempts": 1,
+      "output_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/outputs/stage03_hld_output_20260223_103812.txt",
+      "prompt_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/prompts/stage03_hld_prompt_20260223_103812.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/03-architecture-hld.md"
+      ],
+      "skip_reason": null
+    },
+    "4": {
+      "stage_id": 4,
+      "stage_name": "lld",
+      "status": "completed",
+      "start_time": "2026-02-23T10:39:43.992808",
+      "end_time": "2026-02-23T10:41:14.439071",
+      "duration_seconds": 90.446263,
+      "attempts": 1,
+      "output_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/outputs/stage04_lld_output_20260223_103943.txt",
+      "prompt_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/prompts/stage04_lld_prompt_20260223_103943.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/04-architecture-lld.md"
+      ],
+      "skip_reason": null
+    },
+    "5": {
+      "stage_id": 5,
+      "stage_name": "tdd_tests",
+      "status": "completed",
+      "start_time": "2026-02-23T10:41:14.441112",
+      "end_time": "2026-02-23T10:42:34.260531",
+      "duration_seconds": 79.819419,
+      "attempts": 1,
+      "output_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/outputs/stage05_tdd_tests_output_20260223_104114.txt",
+      "prompt_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/prompts/stage05_tdd_tests_prompt_20260223_104114.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/05-tdd-tests.md"
+      ],
+      "skip_reason": null
+    },
+    "6": {
+      "stage_id": 6,
+      "stage_name": "implement_fix",
+      "status": "completed",
+      "start_time": "2026-02-23T10:42:34.262841",
+      "end_time": "2026-02-23T10:45:33.422041",
+      "duration_seconds": 179.1592,
+      "attempts": 1,
+      "output_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/outputs/stage06_implement_fix_output_20260223_104234.txt",
+      "prompt_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/prompts/stage06_implement_fix_prompt_20260223_104234.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/06-fix-changes.md"
+      ],
+      "skip_reason": null
+    },
+    "7": {
+      "stage_id": 7,
+      "stage_name": "build_verify",
+      "status": "completed",
+      "start_time": "2026-02-23T10:45:56.409818",
+      "end_time": "2026-02-23T10:47:58.367271",
+      "duration_seconds": 121.957453,
+      "attempts": 1,
+      "output_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/outputs/stage07_build_verify_output_20260223_104556.txt",
+      "prompt_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/prompts/stage07_build_verify_prompt_20260223_104556.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/07-build-results.md"
+      ],
+      "skip_reason": null
+    },
+    "8": {
+      "stage_id": 8,
+      "stage_name": "code_review",
+      "status": "completed",
+      "start_time": "2026-02-23T10:47:58.371576",
+      "end_time": "2026-02-23T10:50:27.069768",
+      "duration_seconds": 148.698192,
+      "attempts": 1,
+      "output_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/outputs/stage08_code_review_output_20260223_104758.txt",
+      "prompt_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/prompts/stage08_code_review_prompt_20260223_104758.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/08-code-review.md"
+      ],
+      "skip_reason": null
+    },
+    "9": {
+      "stage_id": 9,
+      "stage_name": "finalize",
+      "status": "completed",
+      "start_time": "2026-02-23T10:50:27.072412",
+      "end_time": "2026-02-23T10:52:07.708228",
+      "duration_seconds": 100.635816,
+      "attempts": 1,
+      "output_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/outputs/stage09_finalize_output_20260223_105027.txt",
+      "prompt_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/prompts/stage09_finalize_prompt_20260223_105027.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/fix-result.json",
+        "llm_out/02-fix-implementation.md"
+      ],
+      "skip_reason": null
+    }
+  },
+  "platform_compatible": true,
+  "skip_remaining": false,
+  "skip_reason": null,
+  "model_used": "claude-opus-4.6-fast",
+  "chromium_src": "/workspace/cr4/src",
+  "baseline_commit": "latest_main",
+  "build_folder": "release_x64",
+  "build_error_count": 0,
+  "last_build_error": null,
+  "pre_sanity_build": {
+    "success": true,
+    "build_type": "pre_sanity",
+    "start_time": "2026-02-23T10:28:08.027855",
+    "end_time": "2026-02-23T10:28:35.041738",
+    "duration_seconds": 10.638608495,
+    "exit_code": 0,
+    "log_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/logs/build_pre_sanity_20260223_102808.log",
+    "error_message": null
+  },
+  "post_fix_build": {
+    "success": true,
+    "build_type": "post_fix",
+    "start_time": "2026-02-23T10:45:34.491296",
+    "end_time": "2026-02-23T10:45:56.406895",
+    "duration_seconds": 16.155182582,
+    "exit_code": 0,
+    "log_file": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans/llm_out/logs/build_post_fix_20260223_104534.log",
+    "error_message": null
+  },
+  "fix_branch": "fix/40848794",
+  "skip_cl_upload": false,
+  "special_instructions": "Instructions.   Scenario-2 in the bug description reproduces the bug. Notice that there are no spaces between the spans. It should be like that to reproduce the buggy behavior. Create a blink web test and a unit test out of it. Run the test before patching the fix to repro the bug. Buggy behavior - double clicking text from any span doesn't select whole word.  Expected behavior - Should select whole word in the span.",
+  "include_explainer": false,
+  "build_service_url": "http://20.244.33.135:7075"
+}
