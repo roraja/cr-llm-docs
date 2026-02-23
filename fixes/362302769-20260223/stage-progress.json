@@ -1,0 +1,138 @@
+{
+  "bug_folder": "/app/23Feb/362302769-No-dragleave-event-is-published-when-dragging-from-an-iframe-to-an-element-positioned-on-top",
+  "bug_id": "362302769",
+  "overall_status": "IN_PROGRESS",
+  "current_stage": 6,
+  "total_stages": 10,
+  "started_at": "2026-02-23T04:44:09.303368",
+  "updated_at": "2026-02-23T05:00:16.752411",
+  "completed_at": null,
+  "stages": {
+    "0": {
+      "stage_id": 0,
+      "stage_name": "prerequisites",
+      "status": "skipped",
+      "start_time": "2026-02-23T04:44:41.747951",
+      "end_time": "2026-02-23T04:44:41.748041",
+      "duration_seconds": 0,
+      "attempts": 0,
+      "output_file": null,
+      "prompt_file": null,
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [],
+      "skip_reason": "All outputs already exist: llm_out/stage-progress.json"
+    },
+    "1": {
+      "stage_id": 1,
+      "stage_name": "platform_repro",
+      "status": "completed",
+      "start_time": "2026-02-23T04:44:41.749004",
+      "end_time": "2026-02-23T04:45:25.509168",
+      "duration_seconds": 43.760164,
+      "attempts": 1,
+      "output_file": "/app/23Feb/362302769-No-dragleave-event-is-published-when-dragging-from-an-iframe-to-an-element-positioned-on-top/llm_out/outputs/stage01_platform_repro_output_20260223_044441.txt",
+      "prompt_file": "/app/23Feb/362302769-No-dragleave-event-is-published-when-dragging-from-an-iframe-to-an-element-positioned-on-top/llm_out/prompts/stage01_platform_repro_prompt_20260223_044441.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/repro.html",
+        "llm_out/platform-check.json"
+      ],
+      "skip_reason": null
+    },
+    "2": {
+      "stage_id": 2,
+      "stage_name": "root_cause",
+      "status": "completed",
+      "start_time": "2026-02-23T04:45:25.510581",
+      "end_time": "2026-02-23T04:48:51.386067",
+      "duration_seconds": 205.875486,
+      "attempts": 1,
+      "output_file": "/app/23Feb/362302769-No-dragleave-event-is-published-when-dragging-from-an-iframe-to-an-element-positioned-on-top/llm_out/outputs/stage02_root_cause_output_20260223_044525.txt",
+      "prompt_file": "/app/23Feb/362302769-No-dragleave-event-is-published-when-dragging-from-an-iframe-to-an-element-positioned-on-top/llm_out/prompts/stage02_root_cause_prompt_20260223_044525.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    },
+    "3": {
+      "stage_id": 3,
+      "stage_name": "hld",
+      "status": "completed",
+      "start_time": "2026-02-23T04:48:51.387604",
+      "end_time": "2026-02-23T04:50:53.690251",
+      "duration_seconds": 122.302647,
+      "attempts": 1,
+      "output_file": "/app/23Feb/362302769-No-dragleave-event-is-published-when-dragging-from-an-iframe-to-an-element-positioned-on-top/llm_out/outputs/stage03_hld_output_20260223_044851.txt",
+      "prompt_file": "/app/23Feb/362302769-No-dragleave-event-is-published-when-dragging-from-an-iframe-to-an-element-positioned-on-top/llm_out/prompts/stage03_hld_prompt_20260223_044851.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/03-architecture-hld.md"
+      ],
+      "skip_reason": null
+    },
+    "4": {
+      "stage_id": 4,
+      "stage_name": "lld",
+      "status": "completed",
+      "start_time": "2026-02-23T04:50:53.692233",
+      "end_time": "2026-02-23T04:52:24.663926",
+      "duration_seconds": 90.971693,
+      "attempts": 1,
+      "output_file": "/app/23Feb/362302769-No-dragleave-event-is-published-when-dragging-from-an-iframe-to-an-element-positioned-on-top/llm_out/outputs/stage04_lld_output_20260223_045053.txt",
+      "prompt_file": "/app/23Feb/362302769-No-dragleave-event-is-published-when-dragging-from-an-iframe-to-an-element-positioned-on-top/llm_out/prompts/stage04_lld_prompt_20260223_045053.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/04-architecture-lld.md"
+      ],
+      "skip_reason": null
+    },
+    "5": {
+      "stage_id": 5,
+      "stage_name": "tdd_tests",
+      "status": "completed",
+      "start_time": "2026-02-23T04:52:24.665612",
+      "end_time": "2026-02-23T05:00:16.751549",
+      "duration_seconds": 472.085937,
+      "attempts": 1,
+      "output_file": "/app/23Feb/362302769-No-dragleave-event-is-published-when-dragging-from-an-iframe-to-an-element-positioned-on-top/llm_out/outputs/stage05_tdd_tests_output_20260223_045224.txt",
+      "prompt_file": "/app/23Feb/362302769-No-dragleave-event-is-published-when-dragging-from-an-iframe-to-an-element-positioned-on-top/llm_out/prompts/stage05_tdd_tests_prompt_20260223_045224.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/05-tdd-tests.md"
+      ],
+      "skip_reason": null
+    }
+  },
+  "platform_compatible": true,
+  "skip_remaining": false,
+  "skip_reason": null,
+  "model_used": "claude-opus-4.6-fast",
+  "chromium_src": "/workspace/cr1/src",
+  "baseline_commit": "origin/main",
+  "build_folder": "release_x64",
+  "build_error_count": 0,
+  "last_build_error": null,
+  "pre_sanity_build": {
+    "success": true,
+    "build_type": "pre_sanity",
+    "start_time": "2026-02-23T04:44:09.303800",
+    "end_time": "2026-02-23T04:44:41.746558",
+    "duration_seconds": 13.949308898,
+    "exit_code": 0,
+    "log_file": "/app/23Feb/362302769-No-dragleave-event-is-published-when-dragging-from-an-iframe-to-an-element-positioned-on-top/llm_out/logs/build_pre_sanity_20260223_044409.log",
+    "error_message": null
+  },
+  "post_fix_build": null,
+  "fix_branch": "fix/362302769",
+  "skip_cl_upload": false,
+  "special_instructions": null,
+  "include_explainer": false,
+  "build_service_url": "http://20.244.33.135:7075"
+}
