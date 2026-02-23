@@ -1,0 +1,92 @@
+{
+  "bug_id": "474131935",
+  "bug_folder": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner",
+  "status": "FIXED",
+  "timestamp": "2026-02-23T08:32:00Z",
+  "baseline_commit": "latest_main",
+  "fix_branch": "fix/474131935_FIXED_TESTPASS",
+  "cl_uploaded": true,
+  "cl_url": "https://chromium-review.googlesource.com/c/chromium/src/+/7600033",
+  "build_directory": "/workspace/cr4/src/out/474131935",
+  "chrome_binary_path": "/workspace/cr4/src/out/474131935/chrome",
+  "files_modified": [
+    {
+      "path": "third_party/blink/renderer/core/clipboard/system_clipboard.h",
+      "change_type": "modify",
+      "lines_added": 2,
+      "lines_removed": 0
+    },
+    {
+      "path": "third_party/blink/renderer/core/clipboard/system_clipboard.cc",
+      "change_type": "modify",
+      "lines_added": 10,
+      "lines_removed": 0
+    },
+    {
+      "path": "third_party/blink/renderer/modules/clipboard/clipboard_reader.cc",
+      "change_type": "modify",
+      "lines_added": 7,
+      "lines_removed": 3
+    },
+    {
+      "path": "third_party/blink/renderer/core/clipboard/system_clipboard_test.cc",
+      "change_type": "modify",
+      "lines_added": 74,
+      "lines_removed": 0
+    }
+  ],
+  "tests_added": [
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/clipboard/system_clipboard_test.cc",
+      "test_name": "SystemClipboardTest.ReadPngAsync",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/clipboard/system_clipboard_test.cc",
+      "test_name": "SystemClipboardTest.ReadPngAsyncEmpty",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/clipboard/system_clipboard_test.cc",
+      "test_name": "SystemClipboardTest.ReadPngAsyncWithUnboundClipboardHost",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    }
+  ],
+  "tdd_verification": {
+    "tests_created_before_fix": true,
+    "tests_failed_before_fix": true,
+    "tests_passed_after_fix": true
+  },
+  "cq_dry_run": {
+    "triggered": true,
+    "status": "PENDING",
+    "url": "https://chromium-review.googlesource.com/c/chromium/src/+/7600033"
+  },
+  "verification": {
+    "build_passed": true,
+    "unit_tests_passed": true,
+    "web_tests_passed": true,
+    "manual_verification_passed": true,
+    "code_review_passed": true
+  },
+  "documentation_files": [
+    "01-fix-assessment.md",
+    "02-fix-implementation.md",
+    "06-fix-changes.md",
+    "07-build-results.md",
+    "08-code-review.md"
+  ],
+  "next_steps": [
+    "Wait for CQ dry run",
+    "Add reviewers",
+    "Address feedback",
+    "Land the change"
+  ],
+  "notes": "No mojom changes required. [Sync] annotation on ReadPng already generates both sync and async C++ bindings. Fix changes only the renderer-side calling convention from sync to async."
+}
