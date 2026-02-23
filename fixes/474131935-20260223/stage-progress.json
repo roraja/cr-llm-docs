@@ -1,0 +1,216 @@
+{
+  "bug_folder": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner",
+  "bug_id": "474131935",
+  "overall_status": "COMPLETED",
+  "current_stage": 9,
+  "total_stages": 10,
+  "started_at": "2026-02-23T07:52:57.906495",
+  "updated_at": "2026-02-23T08:33:30.621843",
+  "completed_at": "2026-02-23T08:33:30.621799",
+  "stages": {
+    "0": {
+      "stage_id": 0,
+      "stage_name": "prerequisites",
+      "status": "skipped",
+      "start_time": "2026-02-23T08:01:45.357838",
+      "end_time": "2026-02-23T08:01:45.357946",
+      "duration_seconds": 0,
+      "attempts": 0,
+      "output_file": null,
+      "prompt_file": null,
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [],
+      "skip_reason": "All outputs already exist: llm_out/stage-progress.json"
+    },
+    "1": {
+      "stage_id": 1,
+      "stage_name": "platform_repro",
+      "status": "completed",
+      "start_time": "2026-02-23T08:01:45.359021",
+      "end_time": "2026-02-23T08:05:09.453512",
+      "duration_seconds": 204.094491,
+      "attempts": 1,
+      "output_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/outputs/stage01_platform_repro_output_20260223_080145.txt",
+      "prompt_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/prompts/stage01_platform_repro_prompt_20260223_080145.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/repro.html",
+        "llm_out/platform-check.json"
+      ],
+      "skip_reason": null
+    },
+    "2": {
+      "stage_id": 2,
+      "stage_name": "root_cause",
+      "status": "completed",
+      "start_time": "2026-02-23T08:05:09.454915",
+      "end_time": "2026-02-23T08:07:34.137530",
+      "duration_seconds": 144.682615,
+      "attempts": 1,
+      "output_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/outputs/stage02_root_cause_output_20260223_080509.txt",
+      "prompt_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/prompts/stage02_root_cause_prompt_20260223_080509.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    },
+    "3": {
+      "stage_id": 3,
+      "stage_name": "hld",
+      "status": "completed",
+      "start_time": "2026-02-23T08:07:34.139230",
+      "end_time": "2026-02-23T08:10:31.148617",
+      "duration_seconds": 177.009387,
+      "attempts": 1,
+      "output_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/outputs/stage03_hld_output_20260223_080734.txt",
+      "prompt_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/prompts/stage03_hld_prompt_20260223_080734.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/03-architecture-hld.md"
+      ],
+      "skip_reason": null
+    },
+    "4": {
+      "stage_id": 4,
+      "stage_name": "lld",
+      "status": "completed",
+      "start_time": "2026-02-23T08:10:31.150464",
+      "end_time": "2026-02-23T08:12:23.427872",
+      "duration_seconds": 112.277408,
+      "attempts": 1,
+      "output_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/outputs/stage04_lld_output_20260223_081031.txt",
+      "prompt_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/prompts/stage04_lld_prompt_20260223_081031.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/04-architecture-lld.md"
+      ],
+      "skip_reason": null
+    },
+    "5": {
+      "stage_id": 5,
+      "stage_name": "tdd_tests",
+      "status": "completed",
+      "start_time": "2026-02-23T08:12:23.430062",
+      "end_time": "2026-02-23T08:15:03.679965",
+      "duration_seconds": 160.249903,
+      "attempts": 1,
+      "output_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/outputs/stage05_tdd_tests_output_20260223_081223.txt",
+      "prompt_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/prompts/stage05_tdd_tests_prompt_20260223_081223.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/05-tdd-tests.md"
+      ],
+      "skip_reason": null
+    },
+    "6": {
+      "stage_id": 6,
+      "stage_name": "implement_fix",
+      "status": "completed",
+      "start_time": "2026-02-23T08:15:03.681850",
+      "end_time": "2026-02-23T08:20:58.862243",
+      "duration_seconds": 355.180393,
+      "attempts": 1,
+      "output_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/outputs/stage06_implement_fix_output_20260223_081503.txt",
+      "prompt_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/prompts/stage06_implement_fix_prompt_20260223_081503.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/06-fix-changes.md"
+      ],
+      "skip_reason": null
+    },
+    "7": {
+      "stage_id": 7,
+      "stage_name": "build_verify",
+      "status": "completed",
+      "start_time": "2026-02-23T08:21:40.902122",
+      "end_time": "2026-02-23T08:29:48.939265",
+      "duration_seconds": 488.037143,
+      "attempts": 1,
+      "output_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/outputs/stage07_build_verify_output_20260223_082140.txt",
+      "prompt_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/prompts/stage07_build_verify_prompt_20260223_082140.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/07-build-results.md"
+      ],
+      "skip_reason": null
+    },
+    "8": {
+      "stage_id": 8,
+      "stage_name": "code_review",
+      "status": "completed",
+      "start_time": "2026-02-23T08:29:48.941357",
+      "end_time": "2026-02-23T08:31:31.505488",
+      "duration_seconds": 102.564131,
+      "attempts": 1,
+      "output_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/outputs/stage08_code_review_output_20260223_082948.txt",
+      "prompt_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/prompts/stage08_code_review_prompt_20260223_082948.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/08-code-review.md"
+      ],
+      "skip_reason": null
+    },
+    "9": {
+      "stage_id": 9,
+      "stage_name": "finalize",
+      "status": "completed",
+      "start_time": "2026-02-23T08:31:31.507959",
+      "end_time": "2026-02-23T08:33:30.620690",
+      "duration_seconds": 119.112731,
+      "attempts": 1,
+      "output_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/outputs/stage09_finalize_output_20260223_083131.txt",
+      "prompt_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/prompts/stage09_finalize_prompt_20260223_083131.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/fix-result.json",
+        "llm_out/02-fix-implementation.md"
+      ],
+      "skip_reason": null
+    }
+  },
+  "platform_compatible": true,
+  "skip_remaining": false,
+  "skip_reason": null,
+  "model_used": "claude-opus-4.6-fast",
+  "chromium_src": "/workspace/cr4/src",
+  "baseline_commit": "latest_main",
+  "build_folder": "release_x64",
+  "build_error_count": 0,
+  "last_build_error": null,
+  "pre_sanity_build": {
+    "success": true,
+    "build_type": "pre_sanity",
+    "start_time": "2026-02-23T07:52:57.907000",
+    "end_time": "2026-02-23T08:01:45.356337",
+    "duration_seconds": 408.492713923,
+    "exit_code": 0,
+    "log_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/logs/build_pre_sanity_20260223_075257.log",
+    "error_message": null
+  },
+  "post_fix_build": {
+    "success": true,
+    "build_type": "post_fix",
+    "start_time": "2026-02-23T08:21:00.627197",
+    "end_time": "2026-02-23T08:21:40.899669",
+    "duration_seconds": 34.910630116,
+    "exit_code": 0,
+    "log_file": "/data/active/474131935-flow-1-Async-Clipboard-API-read-clipboard-in-blocking-manner/llm_out/logs/build_post_fix_20260223_082100.log",
+    "error_message": null
+  },
+  "fix_branch": "fix/474131935",
+  "skip_cl_upload": false,
+  "special_instructions": "With the latest code, only check if I need to change clipboardHOst mojom from Sync to Async ? is it really required or chromium won't block UI for sync IPC ? Search for code and docs related to mojom sync API and mention in hld/lld/fix assessment as well",
+  "include_explainer": false,
+  "build_service_url": "http://20.244.33.135:7075"
+}
