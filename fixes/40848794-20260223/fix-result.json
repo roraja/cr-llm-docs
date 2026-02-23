@@ -1,0 +1,86 @@
+{
+  "bug_id": "40848794",
+  "bug_folder": "/data/active/40848794-flow-18-Double-click-selection-not-working-on-adjacent-spans",
+  "status": "FIXED",
+  "timestamp": "2026-02-23T10:50:31.700Z",
+  "baseline_commit": "latest_main",
+  "fix_branch": "fix/40848794_FIXED_TESTPASS",
+  "cl_uploaded": true,
+  "cl_url": "https://chromium-review.googlesource.com/c/chromium/src/+/7599040",
+  "build_directory": "/workspace/cr4/src/out/40848794",
+  "chrome_binary_path": "/workspace/cr4/src/out/40848794/chrome",
+  "files_modified": [
+    {
+      "path": "third_party/blink/renderer/core/editing/visible_units.cc",
+      "change_type": "modify",
+      "lines_added": 10,
+      "lines_removed": 2
+    },
+    {
+      "path": "third_party/blink/renderer/core/editing/visible_units_word_test.cc",
+      "change_type": "modify",
+      "lines_added": 47,
+      "lines_removed": 0
+    },
+    {
+      "path": "third_party/blink/web_tests/editing/selection/mouse/doubleclick-adjacent-contenteditable-spans.html",
+      "change_type": "add",
+      "lines_added": 65,
+      "lines_removed": 0
+    }
+  ],
+  "tests_added": [
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/visible_units_word_test.cc",
+      "test_name": "VisibleUnitsWordTest.StartOfWordAdjacentContentEditableSpans",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/visible_units_word_test.cc",
+      "test_name": "VisibleUnitsWordTest.EndOfWordAdjacentContentEditableSpans",
+      "failed_before_fix": false,
+      "passed_after_fix": true
+    },
+    {
+      "type": "web_test",
+      "file": "third_party/blink/web_tests/editing/selection/mouse/doubleclick-adjacent-contenteditable-spans.html",
+      "test_name": "doubleclick-adjacent-contenteditable-spans",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    }
+  ],
+  "tdd_verification": {
+    "tests_created_before_fix": true,
+    "tests_failed_before_fix": true,
+    "tests_passed_after_fix": true
+  },
+  "cq_dry_run": {
+    "triggered": true,
+    "status": "PENDING",
+    "url": "https://chromium-review.googlesource.com/c/chromium/src/+/7599040"
+  },
+  "verification": {
+    "build_passed": true,
+    "unit_tests_passed": true,
+    "web_tests_passed": true,
+    "manual_verification_passed": true,
+    "code_review_passed": true
+  },
+  "documentation_files": [
+    "01-fix-assessment.md",
+    "02-fix-implementation.md",
+    "06-fix-changes.md",
+    "07-build-results.md",
+    "08-code-review.md"
+  ],
+  "next_steps": [
+    "Wait for CQ dry run",
+    "Add reviewers",
+    "Address feedback",
+    "Land the change"
+  ],
+  "notes": ""
+}
