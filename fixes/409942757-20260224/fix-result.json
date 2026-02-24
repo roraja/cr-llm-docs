@@ -1,0 +1,93 @@
+{
+  "bug_id": "409942757",
+  "bug_folder": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element",
+  "status": "FIXED",
+  "timestamp": "2026-02-23T12:37:43.477Z",
+  "baseline_commit": "latest_main",
+  "fix_branch": "fix/409942757_FIXED_TESTPASS",
+  "cl_uploaded": true,
+  "cl_url": "https://chromium-review.googlesource.com/c/chromium/src/+/7599179",
+  "build_directory": "/workspace/cr4/src/out/409942757",
+  "chrome_binary_path": "/workspace/cr4/src/out/409942757/chrome",
+  "files_modified": [
+    {
+      "path": "third_party/blink/renderer/core/editing/visible_units.cc",
+      "change_type": "modify",
+      "lines_added": 26,
+      "lines_removed": 6
+    },
+    {
+      "path": "third_party/blink/renderer/core/editing/visible_units_test.cc",
+      "change_type": "add",
+      "lines_added": 61,
+      "lines_removed": 0
+    },
+    {
+      "path": "third_party/blink/web_tests/editing/selection/modify_move/move_over_non_editable_in_pre.html",
+      "change_type": "add",
+      "lines_added": 62,
+      "lines_removed": 0
+    }
+  ],
+  "tests_added": [
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/visible_units_test.cc",
+      "test_name": "VisibleUnitsTest.MostBackwardCaretPositionPreservedNewlineBeforeNonEditable",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/visible_units_test.cc",
+      "test_name": "VisibleUnitsTest.IsVisuallyEquivalentCandidateAtEditableNonEditableBoundary",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/core/editing/visible_units_test.cc",
+      "test_name": "VisibleUnitsTest.PreviousPositionOfNonEditableSpanInPreWithNewline",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    },
+    {
+      "type": "web_test",
+      "file": "third_party/blink/web_tests/editing/selection/modify_move/move_over_non_editable_in_pre.html",
+      "test_name": "move_over_non_editable_in_pre (7 sub-tests)",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    }
+  ],
+  "tdd_verification": {
+    "tests_created_before_fix": true,
+    "tests_failed_before_fix": true,
+    "tests_passed_after_fix": true
+  },
+  "cq_dry_run": {
+    "triggered": true,
+    "status": "PENDING",
+    "url": "https://chromium-review.googlesource.com/c/chromium/src/+/7599179"
+  },
+  "verification": {
+    "build_passed": true,
+    "unit_tests_passed": true,
+    "web_tests_passed": true,
+    "manual_verification_passed": true,
+    "code_review_passed": true
+  },
+  "documentation_files": [
+    "01-fix-assessment.md",
+    "02-fix-implementation.md",
+    "06-fix-changes.md",
+    "07-build-results.md",
+    "08-code-review.md"
+  ],
+  "next_steps": [
+    "Wait for CQ dry run",
+    "Add reviewers",
+    "Address feedback",
+    "Land the change"
+  ],
+  "notes": "Pre-existing failures (unrelated to fix): VisibleUnitsTest.previousPositionOfNoPreviousPosition and editing/selection/modify_move/move_right_character_over_ineditable.html"
+}
