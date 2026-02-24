@@ -1,0 +1,22 @@
+{
+  "cl_number": "7603956",
+  "overall_status": "COMPLETED",
+  "stages": {
+    "hld": {
+      "status": "COMPLETED",
+      "duration_seconds": 131.6
+    },
+    "lld": {
+      "status": "COMPLETED",
+      "duration_seconds": 162.7
+    },
+    "review": {
+      "status": "COMPLETED",
+      "duration_seconds": 100.2
+    },
+    "summary": {
+      "status": "COMPLETED",
+      "duration_seconds": 84.5
+    }
+  }
+}
