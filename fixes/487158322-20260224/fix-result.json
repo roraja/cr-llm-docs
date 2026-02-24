@@ -1,0 +1,69 @@
+{
+  "bug_id": "487158322",
+  "bug_folder": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument",
+  "status": "FIXED",
+  "timestamp": "2026-02-24T19:50:00Z",
+  "baseline_commit": "latest_main",
+  "fix_branch": "fix/487158322_FIXED_TESTPASS",
+  "cl_uploaded": true,
+  "cl_url": "https://chromium-review.googlesource.com/c/chromium/src/+/7603956",
+  "build_directory": "/workspace/cr1/src/out/487158322",
+  "chrome_binary_path": "/workspace/cr1/src/out/487158322/chrome",
+  "files_modified": [
+    {
+      "path": "third_party/blink/renderer/modules/clipboard/clipboard_change_event_controller.cc",
+      "change_type": "modify",
+      "lines_added": 6,
+      "lines_removed": 0
+    },
+    {
+      "path": "third_party/blink/renderer/modules/clipboard/clipboard_change_event_controller_unittest.cc",
+      "change_type": "modify",
+      "lines_added": 47,
+      "lines_removed": 0
+    }
+  ],
+  "tests_added": [
+    {
+      "type": "unit_test",
+      "file": "third_party/blink/renderer/modules/clipboard/clipboard_change_event_controller_unittest.cc",
+      "test_name": "ClipboardChangeEventTest.NoCrashWhenFocusedFrameChangedAfterDetachment",
+      "failed_before_fix": true,
+      "passed_after_fix": true
+    }
+  ],
+  "tdd_verification": {
+    "tests_created_before_fix": true,
+    "tests_failed_before_fix": true,
+    "tests_passed_after_fix": true
+  },
+  "cq_dry_run": {
+    "triggered": true,
+    "status": "PENDING",
+    "url": "https://chromium-review.googlesource.com/c/chromium/src/+/7603956"
+  },
+  "verification": {
+    "build_passed": true,
+    "unit_tests_passed": true,
+    "web_tests_passed": true,
+    "manual_verification_passed": true,
+    "code_review_passed": true
+  },
+  "documentation_files": [
+    "01-fix-assessment.md",
+    "02-fix-implementation.md",
+    "03-architecture-hld.md",
+    "04-architecture-lld.md",
+    "05-tdd-tests.md",
+    "06-fix-changes.md",
+    "07-build-results.md",
+    "08-code-review.md"
+  ],
+  "next_steps": [
+    "Wait for CQ dry run",
+    "Add reviewers",
+    "Address feedback",
+    "Land the change"
+  ],
+  "notes": "Fix adds null checks for GetExecutionContext() in MaybeDispatchClipboardChangeEvent() and GetSystemClipboard(), preventing null pointer dereference crash during frame detachment. Matches existing pattern in OnClipboardChanged(). All 97 related tests pass with no regressions."
+}
