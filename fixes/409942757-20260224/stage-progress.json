@@ -1,0 +1,216 @@
+{
+  "bug_folder": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element",
+  "bug_id": "409942757",
+  "overall_status": "COMPLETED",
+  "current_stage": 9,
+  "total_stages": 10,
+  "started_at": "2026-02-23T11:41:28.292178",
+  "updated_at": "2026-02-23T12:39:14.473061",
+  "completed_at": "2026-02-23T12:39:14.473017",
+  "stages": {
+    "0": {
+      "stage_id": 0,
+      "stage_name": "prerequisites",
+      "status": "skipped",
+      "start_time": "2026-02-23T11:42:47.398506",
+      "end_time": "2026-02-23T11:42:47.398620",
+      "duration_seconds": 0,
+      "attempts": 0,
+      "output_file": null,
+      "prompt_file": null,
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [],
+      "skip_reason": "All outputs already exist: llm_out/stage-progress.json"
+    },
+    "1": {
+      "stage_id": 1,
+      "stage_name": "platform_repro",
+      "status": "completed",
+      "start_time": "2026-02-23T11:42:47.399814",
+      "end_time": "2026-02-23T11:43:30.811616",
+      "duration_seconds": 43.411802,
+      "attempts": 1,
+      "output_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/outputs/stage01_platform_repro_output_20260223_114247.txt",
+      "prompt_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/prompts/stage01_platform_repro_prompt_20260223_114247.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/repro.html",
+        "llm_out/platform-check.json"
+      ],
+      "skip_reason": null
+    },
+    "2": {
+      "stage_id": 2,
+      "stage_name": "root_cause",
+      "status": "completed",
+      "start_time": "2026-02-23T11:43:30.812925",
+      "end_time": "2026-02-23T11:53:47.583885",
+      "duration_seconds": 616.77096,
+      "attempts": 1,
+      "output_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/outputs/stage02_root_cause_output_20260223_114330.txt",
+      "prompt_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/prompts/stage02_root_cause_prompt_20260223_114330.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    },
+    "3": {
+      "stage_id": 3,
+      "stage_name": "hld",
+      "status": "completed",
+      "start_time": "2026-02-23T11:53:47.586695",
+      "end_time": "2026-02-23T11:56:00.171852",
+      "duration_seconds": 132.585157,
+      "attempts": 1,
+      "output_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/outputs/stage03_hld_output_20260223_115347.txt",
+      "prompt_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/prompts/stage03_hld_prompt_20260223_115347.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/03-architecture-hld.md"
+      ],
+      "skip_reason": null
+    },
+    "4": {
+      "stage_id": 4,
+      "stage_name": "lld",
+      "status": "completed",
+      "start_time": "2026-02-23T11:56:00.173960",
+      "end_time": "2026-02-23T12:01:51.661453",
+      "duration_seconds": 351.487493,
+      "attempts": 1,
+      "output_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/outputs/stage04_lld_output_20260223_115600.txt",
+      "prompt_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/prompts/stage04_lld_prompt_20260223_115600.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/04-architecture-lld.md"
+      ],
+      "skip_reason": null
+    },
+    "5": {
+      "stage_id": 5,
+      "stage_name": "tdd_tests",
+      "status": "completed",
+      "start_time": "2026-02-23T12:01:51.663628",
+      "end_time": "2026-02-23T12:15:58.492716",
+      "duration_seconds": 846.829088,
+      "attempts": 1,
+      "output_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/outputs/stage05_tdd_tests_output_20260223_120151.txt",
+      "prompt_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/prompts/stage05_tdd_tests_prompt_20260223_120151.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/05-tdd-tests.md"
+      ],
+      "skip_reason": null
+    },
+    "6": {
+      "stage_id": 6,
+      "stage_name": "implement_fix",
+      "status": "completed",
+      "start_time": "2026-02-23T12:15:58.494847",
+      "end_time": "2026-02-23T12:32:25.452083",
+      "duration_seconds": 986.957236,
+      "attempts": 1,
+      "output_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/outputs/stage06_implement_fix_output_20260223_121558.txt",
+      "prompt_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/prompts/stage06_implement_fix_prompt_20260223_121558.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/06-fix-changes.md"
+      ],
+      "skip_reason": null
+    },
+    "7": {
+      "stage_id": 7,
+      "stage_name": "build_verify",
+      "status": "completed",
+      "start_time": "2026-02-23T12:33:24.935709",
+      "end_time": "2026-02-23T12:36:29.208450",
+      "duration_seconds": 184.272741,
+      "attempts": 1,
+      "output_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/outputs/stage07_build_verify_output_20260223_123324.txt",
+      "prompt_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/prompts/stage07_build_verify_prompt_20260223_123324.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/07-build-results.md"
+      ],
+      "skip_reason": null
+    },
+    "8": {
+      "stage_id": 8,
+      "stage_name": "code_review",
+      "status": "completed",
+      "start_time": "2026-02-23T12:36:29.210901",
+      "end_time": "2026-02-23T12:37:38.809759",
+      "duration_seconds": 69.598858,
+      "attempts": 1,
+      "output_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/outputs/stage08_code_review_output_20260223_123629.txt",
+      "prompt_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/prompts/stage08_code_review_prompt_20260223_123629.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/08-code-review.md"
+      ],
+      "skip_reason": null
+    },
+    "9": {
+      "stage_id": 9,
+      "stage_name": "finalize",
+      "status": "completed",
+      "start_time": "2026-02-23T12:37:38.812478",
+      "end_time": "2026-02-23T12:39:14.471423",
+      "duration_seconds": 95.658945,
+      "attempts": 1,
+      "output_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/outputs/stage09_finalize_output_20260223_123738.txt",
+      "prompt_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/prompts/stage09_finalize_prompt_20260223_123738.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/fix-result.json",
+        "llm_out/02-fix-implementation.md"
+      ],
+      "skip_reason": null
+    }
+  },
+  "platform_compatible": true,
+  "skip_remaining": false,
+  "skip_reason": null,
+  "model_used": "claude-opus-4.6-fast",
+  "chromium_src": "/workspace/cr4/src",
+  "baseline_commit": "latest_main",
+  "build_folder": "release_x64",
+  "build_error_count": 0,
+  "last_build_error": null,
+  "pre_sanity_build": {
+    "success": true,
+    "build_type": "pre_sanity",
+    "start_time": "2026-02-23T11:41:28.292788",
+    "end_time": "2026-02-23T11:42:47.396634",
+    "duration_seconds": 60.695557295,
+    "exit_code": 0,
+    "log_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/logs/build_pre_sanity_20260223_114128.log",
+    "error_message": null
+  },
+  "post_fix_build": {
+    "success": true,
+    "build_type": "post_fix",
+    "start_time": "2026-02-23T12:32:26.521085",
+    "end_time": "2026-02-23T12:33:24.932986",
+    "duration_seconds": 54.804521012,
+    "exit_code": 0,
+    "log_file": "/data/active/409942757-flow-25-Incorrect-cursor-position-when-moving-from-right-to-left-over-a-contenteditable-false-element/llm_out/logs/build_post_fix_20260223_123226.log",
+    "error_message": null
+  },
+  "fix_branch": "fix/409942757",
+  "skip_cl_upload": false,
+  "special_instructions": null,
+  "include_explainer": false,
+  "build_service_url": "http://20.244.33.135:7075"
+}
