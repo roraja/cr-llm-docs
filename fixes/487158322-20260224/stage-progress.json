@@ -1,0 +1,121 @@
+{
+  "bug_folder": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument",
+  "bug_id": "487158322",
+  "overall_status": "IN_PROGRESS",
+  "current_stage": 5,
+  "total_stages": 10,
+  "started_at": "2026-02-24T19:28:48.387093",
+  "updated_at": "2026-02-24T19:34:56.955631",
+  "completed_at": null,
+  "stages": {
+    "0": {
+      "stage_id": 0,
+      "stage_name": "prerequisites",
+      "status": "skipped",
+      "start_time": "2026-02-24T19:29:57.114284",
+      "end_time": "2026-02-24T19:29:57.114399",
+      "duration_seconds": 0,
+      "attempts": 0,
+      "output_file": null,
+      "prompt_file": null,
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [],
+      "skip_reason": "All outputs already exist: llm_out/stage-progress.json"
+    },
+    "1": {
+      "stage_id": 1,
+      "stage_name": "platform_repro",
+      "status": "completed",
+      "start_time": "2026-02-24T19:29:57.115481",
+      "end_time": "2026-02-24T19:30:45.861610",
+      "duration_seconds": 48.746129,
+      "attempts": 1,
+      "output_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/outputs/stage01_platform_repro_output_20260224_192957.txt",
+      "prompt_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/prompts/stage01_platform_repro_prompt_20260224_192957.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/repro.html",
+        "llm_out/platform-check.json"
+      ],
+      "skip_reason": null
+    },
+    "2": {
+      "stage_id": 2,
+      "stage_name": "root_cause",
+      "status": "completed",
+      "start_time": "2026-02-24T19:30:45.862952",
+      "end_time": "2026-02-24T19:31:50.445860",
+      "duration_seconds": 64.582908,
+      "attempts": 1,
+      "output_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/outputs/stage02_root_cause_output_20260224_193045.txt",
+      "prompt_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/prompts/stage02_root_cause_prompt_20260224_193045.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    },
+    "3": {
+      "stage_id": 3,
+      "stage_name": "hld",
+      "status": "completed",
+      "start_time": "2026-02-24T19:31:50.447312",
+      "end_time": "2026-02-24T19:33:10.665850",
+      "duration_seconds": 80.218538,
+      "attempts": 1,
+      "output_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/outputs/stage03_hld_output_20260224_193150.txt",
+      "prompt_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/prompts/stage03_hld_prompt_20260224_193150.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/03-architecture-hld.md"
+      ],
+      "skip_reason": null
+    },
+    "4": {
+      "stage_id": 4,
+      "stage_name": "lld",
+      "status": "completed",
+      "start_time": "2026-02-24T19:33:10.669173",
+      "end_time": "2026-02-24T19:34:56.954586",
+      "duration_seconds": 106.285413,
+      "attempts": 1,
+      "output_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/outputs/stage04_lld_output_20260224_193310.txt",
+      "prompt_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/prompts/stage04_lld_prompt_20260224_193310.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/04-architecture-lld.md"
+      ],
+      "skip_reason": null
+    }
+  },
+  "platform_compatible": true,
+  "skip_remaining": false,
+  "skip_reason": null,
+  "model_used": "claude-opus-4.6-fast",
+  "chromium_src": "/workspace/cr1/src",
+  "baseline_commit": "latest_main",
+  "build_folder": "release_x64",
+  "build_error_count": 0,
+  "last_build_error": null,
+  "pre_sanity_build": {
+    "success": true,
+    "build_type": "pre_sanity",
+    "start_time": "2026-02-24T19:28:48.387709",
+    "end_time": "2026-02-24T19:29:57.112691",
+    "duration_seconds": 56.078417591,
+    "exit_code": 0,
+    "log_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/logs/build_pre_sanity_20260224_192848.log",
+    "error_message": null
+  },
+  "post_fix_build": null,
+  "fix_branch": "fix/487158322",
+  "skip_cl_upload": false,
+  "special_instructions": null,
+  "include_explainer": false,
+  "build_service_url": "http://20.244.33.135:7075"
+}
