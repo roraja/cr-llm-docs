@@ -1,0 +1,216 @@
+{
+  "bug_folder": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows",
+  "bug_id": "41194596",
+  "overall_status": "COMPLETED",
+  "current_stage": 9,
+  "total_stages": 10,
+  "started_at": "2026-02-23T11:04:39.466459",
+  "updated_at": "2026-02-23T11:41:10.791013",
+  "completed_at": "2026-02-23T11:41:10.790970",
+  "stages": {
+    "0": {
+      "stage_id": 0,
+      "stage_name": "prerequisites",
+      "status": "skipped",
+      "start_time": "2026-02-23T11:05:48.132425",
+      "end_time": "2026-02-23T11:05:48.132539",
+      "duration_seconds": 0,
+      "attempts": 0,
+      "output_file": null,
+      "prompt_file": null,
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [],
+      "skip_reason": "All outputs already exist: llm_out/stage-progress.json"
+    },
+    "1": {
+      "stage_id": 1,
+      "stage_name": "platform_repro",
+      "status": "completed",
+      "start_time": "2026-02-23T11:05:48.134016",
+      "end_time": "2026-02-23T11:06:36.819202",
+      "duration_seconds": 48.685186,
+      "attempts": 1,
+      "output_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/outputs/stage01_platform_repro_output_20260223_110548.txt",
+      "prompt_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/prompts/stage01_platform_repro_prompt_20260223_110548.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/repro.html",
+        "llm_out/platform-check.json"
+      ],
+      "skip_reason": null
+    },
+    "2": {
+      "stage_id": 2,
+      "stage_name": "root_cause",
+      "status": "completed",
+      "start_time": "2026-02-23T11:06:36.820736",
+      "end_time": "2026-02-23T11:12:01.419267",
+      "duration_seconds": 324.598531,
+      "attempts": 1,
+      "output_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/outputs/stage02_root_cause_output_20260223_110636.txt",
+      "prompt_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/prompts/stage02_root_cause_prompt_20260223_110636.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    },
+    "3": {
+      "stage_id": 3,
+      "stage_name": "hld",
+      "status": "completed",
+      "start_time": "2026-02-23T11:12:01.420981",
+      "end_time": "2026-02-23T11:13:37.067515",
+      "duration_seconds": 95.646534,
+      "attempts": 1,
+      "output_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/outputs/stage03_hld_output_20260223_111201.txt",
+      "prompt_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/prompts/stage03_hld_prompt_20260223_111201.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/03-architecture-hld.md"
+      ],
+      "skip_reason": null
+    },
+    "4": {
+      "stage_id": 4,
+      "stage_name": "lld",
+      "status": "completed",
+      "start_time": "2026-02-23T11:13:37.069225",
+      "end_time": "2026-02-23T11:15:33.543443",
+      "duration_seconds": 116.474218,
+      "attempts": 1,
+      "output_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/outputs/stage04_lld_output_20260223_111337.txt",
+      "prompt_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/prompts/stage04_lld_prompt_20260223_111337.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/04-architecture-lld.md"
+      ],
+      "skip_reason": null
+    },
+    "5": {
+      "stage_id": 5,
+      "stage_name": "tdd_tests",
+      "status": "completed",
+      "start_time": "2026-02-23T11:15:33.546260",
+      "end_time": "2026-02-23T11:19:55.775786",
+      "duration_seconds": 262.229526,
+      "attempts": 1,
+      "output_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/outputs/stage05_tdd_tests_output_20260223_111533.txt",
+      "prompt_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/prompts/stage05_tdd_tests_prompt_20260223_111533.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/05-tdd-tests.md"
+      ],
+      "skip_reason": null
+    },
+    "6": {
+      "stage_id": 6,
+      "stage_name": "implement_fix",
+      "status": "completed",
+      "start_time": "2026-02-23T11:19:55.777676",
+      "end_time": "2026-02-23T11:33:29.421944",
+      "duration_seconds": 813.644268,
+      "attempts": 1,
+      "output_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/outputs/stage06_implement_fix_output_20260223_111955.txt",
+      "prompt_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/prompts/stage06_implement_fix_prompt_20260223_111955.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/06-fix-changes.md"
+      ],
+      "skip_reason": null
+    },
+    "7": {
+      "stage_id": 7,
+      "stage_name": "build_verify",
+      "status": "completed",
+      "start_time": "2026-02-23T11:34:54.750391",
+      "end_time": "2026-02-23T11:38:04.855914",
+      "duration_seconds": 190.105523,
+      "attempts": 1,
+      "output_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/outputs/stage07_build_verify_output_20260223_113454.txt",
+      "prompt_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/prompts/stage07_build_verify_prompt_20260223_113454.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/07-build-results.md"
+      ],
+      "skip_reason": null
+    },
+    "8": {
+      "stage_id": 8,
+      "stage_name": "code_review",
+      "status": "completed",
+      "start_time": "2026-02-23T11:38:04.858171",
+      "end_time": "2026-02-23T11:39:24.741770",
+      "duration_seconds": 79.883599,
+      "attempts": 1,
+      "output_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/outputs/stage08_code_review_output_20260223_113804.txt",
+      "prompt_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/prompts/stage08_code_review_prompt_20260223_113804.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/08-code-review.md"
+      ],
+      "skip_reason": null
+    },
+    "9": {
+      "stage_id": 9,
+      "stage_name": "finalize",
+      "status": "completed",
+      "start_time": "2026-02-23T11:39:24.744049",
+      "end_time": "2026-02-23T11:41:10.789784",
+      "duration_seconds": 106.045735,
+      "attempts": 1,
+      "output_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/outputs/stage09_finalize_output_20260223_113924.txt",
+      "prompt_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/prompts/stage09_finalize_prompt_20260223_113924.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/fix-result.json",
+        "llm_out/02-fix-implementation.md"
+      ],
+      "skip_reason": null
+    }
+  },
+  "platform_compatible": true,
+  "skip_remaining": false,
+  "skip_reason": null,
+  "model_used": "claude-opus-4.6-fast",
+  "chromium_src": "/workspace/cr4/src",
+  "baseline_commit": "latest_main",
+  "build_folder": "release_x64",
+  "build_error_count": 0,
+  "last_build_error": null,
+  "pre_sanity_build": {
+    "success": true,
+    "build_type": "pre_sanity",
+    "start_time": "2026-02-23T11:04:39.467042",
+    "end_time": "2026-02-23T11:05:48.130568",
+    "duration_seconds": 54.730413725,
+    "exit_code": 0,
+    "log_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/logs/build_pre_sanity_20260223_110439.log",
+    "error_message": null
+  },
+  "post_fix_build": {
+    "success": true,
+    "build_type": "post_fix",
+    "start_time": "2026-02-23T11:33:30.459387",
+    "end_time": "2026-02-23T11:34:54.747622",
+    "duration_seconds": 83.034420248,
+    "exit_code": 0,
+    "log_file": "/data/active/41194596-flow-24-Ctrlupdown-does-not-work-properly-in-textareas-on-Windows/llm_out/logs/build_post_fix_20260223_113330.log",
+    "error_message": null
+  },
+  "fix_branch": "fix/41194596",
+  "skip_cl_upload": false,
+  "special_instructions": null,
+  "include_explainer": false,
+  "build_service_url": "http://20.244.33.135:7075"
+}
