@@ -1,0 +1,22 @@
+{
+  "cl_number": "7602194",
+  "overall_status": "COMPLETED",
+  "stages": {
+    "hld": {
+      "status": "COMPLETED",
+      "duration_seconds": 105.2
+    },
+    "lld": {
+      "status": "COMPLETED",
+      "duration_seconds": 65.1
+    },
+    "review": {
+      "status": "COMPLETED",
+      "duration_seconds": 65.1
+    },
+    "summary": {
+      "status": "COMPLETED",
+      "duration_seconds": 70.2
+    }
+  }
+}
