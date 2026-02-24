@@ -1,12 +1,12 @@
 {
   "bug_folder": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument",
   "bug_id": "487158322",
-  "overall_status": "IN_PROGRESS",
-  "current_stage": 5,
+  "overall_status": "COMPLETED",
+  "current_stage": 9,
   "total_stages": 10,
   "started_at": "2026-02-24T19:28:48.387093",
-  "updated_at": "2026-02-24T19:34:56.955631",
-  "completed_at": null,
+  "updated_at": "2026-02-24T19:50:45.440909",
+  "completed_at": "2026-02-24T19:50:45.440868",
   "stages": {
     "0": {
       "stage_id": 0,
@@ -91,6 +91,92 @@
         "llm_out/04-architecture-lld.md"
       ],
       "skip_reason": null
+    },
+    "5": {
+      "stage_id": 5,
+      "stage_name": "tdd_tests",
+      "status": "completed",
+      "start_time": "2026-02-24T19:34:56.956608",
+      "end_time": "2026-02-24T19:43:08.266405",
+      "duration_seconds": 491.309797,
+      "attempts": 1,
+      "output_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/outputs/stage05_tdd_tests_output_20260224_193456.txt",
+      "prompt_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/prompts/stage05_tdd_tests_prompt_20260224_193456.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/05-tdd-tests.md"
+      ],
+      "skip_reason": null
+    },
+    "6": {
+      "stage_id": 6,
+      "stage_name": "implement_fix",
+      "status": "completed",
+      "start_time": "2026-02-24T19:43:08.268431",
+      "end_time": "2026-02-24T19:45:09.714959",
+      "duration_seconds": 121.446528,
+      "attempts": 1,
+      "output_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/outputs/stage06_implement_fix_output_20260224_194308.txt",
+      "prompt_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/prompts/stage06_implement_fix_prompt_20260224_194308.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/06-fix-changes.md"
+      ],
+      "skip_reason": null
+    },
+    "7": {
+      "stage_id": 7,
+      "stage_name": "build_verify",
+      "status": "completed",
+      "start_time": "2026-02-24T19:45:48.207671",
+      "end_time": "2026-02-24T19:47:44.555134",
+      "duration_seconds": 116.347463,
+      "attempts": 1,
+      "output_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/outputs/stage07_build_verify_output_20260224_194548.txt",
+      "prompt_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/prompts/stage07_build_verify_prompt_20260224_194548.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/07-build-results.md"
+      ],
+      "skip_reason": null
+    },
+    "8": {
+      "stage_id": 8,
+      "stage_name": "code_review",
+      "status": "completed",
+      "start_time": "2026-02-24T19:47:44.557544",
+      "end_time": "2026-02-24T19:49:09.787606",
+      "duration_seconds": 85.230062,
+      "attempts": 1,
+      "output_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/outputs/stage08_code_review_output_20260224_194744.txt",
+      "prompt_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/prompts/stage08_code_review_prompt_20260224_194744.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/08-code-review.md"
+      ],
+      "skip_reason": null
+    },
+    "9": {
+      "stage_id": 9,
+      "stage_name": "finalize",
+      "status": "completed",
+      "start_time": "2026-02-24T19:49:09.790422",
+      "end_time": "2026-02-24T19:50:45.439773",
+      "duration_seconds": 95.649351,
+      "attempts": 1,
+      "output_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/outputs/stage09_finalize_output_20260224_194909.txt",
+      "prompt_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/prompts/stage09_finalize_prompt_20260224_194909.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/fix-result.json",
+        "llm_out/02-fix-implementation.md"
+      ],
+      "skip_reason": null
     }
   },
   "platform_compatible": true,
@@ -112,7 +198,16 @@
     "log_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/logs/build_pre_sanity_20260224_192848.log",
     "error_message": null
   },
-  "post_fix_build": null,
+  "post_fix_build": {
+    "success": true,
+    "build_type": "post_fix",
+    "start_time": "2026-02-24T19:45:10.746822",
+    "end_time": "2026-02-24T19:45:48.205094",
+    "duration_seconds": 34.066334731,
+    "exit_code": 0,
+    "log_file": "/data/active/487158322-flow-35-Clipboardchange-event-Fix-crash-caused-by-possible-null-dereference-blinkLocalDOMWindowdocument/llm_out/logs/build_post_fix_20260224_194510.log",
+    "error_message": null
+  },
   "fix_branch": "fix/487158322",
   "skip_cl_upload": false,
   "special_instructions": null,
