@@ -1,0 +1,216 @@
+{
+  "bug_folder": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere",
+  "bug_id": "details",
+  "overall_status": "COMPLETED",
+  "current_stage": 9,
+  "total_stages": 10,
+  "started_at": "2026-02-24T19:40:51.045271",
+  "updated_at": "2026-02-24T20:30:49.093316",
+  "completed_at": "2026-02-24T20:30:49.093256",
+  "stages": {
+    "0": {
+      "stage_id": 0,
+      "stage_name": "prerequisites",
+      "status": "skipped",
+      "start_time": "2026-02-24T19:48:25.797286",
+      "end_time": "2026-02-24T19:48:25.797412",
+      "duration_seconds": 0,
+      "attempts": 0,
+      "output_file": null,
+      "prompt_file": null,
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [],
+      "skip_reason": "All outputs already exist: llm_out/stage-progress.json"
+    },
+    "1": {
+      "stage_id": 1,
+      "stage_name": "platform_repro",
+      "status": "completed",
+      "start_time": "2026-02-24T19:48:25.798681",
+      "end_time": "2026-02-24T19:50:51.004738",
+      "duration_seconds": 145.206057,
+      "attempts": 1,
+      "output_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/outputs/stage01_platform_repro_output_20260224_194825.txt",
+      "prompt_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/prompts/stage01_platform_repro_prompt_20260224_194825.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/repro.html",
+        "llm_out/platform-check.json"
+      ],
+      "skip_reason": null
+    },
+    "2": {
+      "stage_id": 2,
+      "stage_name": "root_cause",
+      "status": "completed",
+      "start_time": "2026-02-24T19:50:51.006310",
+      "end_time": "2026-02-24T19:53:26.185869",
+      "duration_seconds": 155.179559,
+      "attempts": 1,
+      "output_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/outputs/stage02_root_cause_output_20260224_195051.txt",
+      "prompt_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/prompts/stage02_root_cause_prompt_20260224_195051.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/01-fix-assessment.md"
+      ],
+      "skip_reason": null
+    },
+    "3": {
+      "stage_id": 3,
+      "stage_name": "hld",
+      "status": "completed",
+      "start_time": "2026-02-24T19:53:26.187629",
+      "end_time": "2026-02-24T19:55:41.353747",
+      "duration_seconds": 135.166118,
+      "attempts": 1,
+      "output_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/outputs/stage03_hld_output_20260224_195326.txt",
+      "prompt_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/prompts/stage03_hld_prompt_20260224_195326.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/03-architecture-hld.md"
+      ],
+      "skip_reason": null
+    },
+    "4": {
+      "stage_id": 4,
+      "stage_name": "lld",
+      "status": "completed",
+      "start_time": "2026-02-24T19:55:41.355511",
+      "end_time": "2026-02-24T19:57:51.514846",
+      "duration_seconds": 130.159335,
+      "attempts": 1,
+      "output_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/outputs/stage04_lld_output_20260224_195541.txt",
+      "prompt_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/prompts/stage04_lld_prompt_20260224_195541.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/04-architecture-lld.md"
+      ],
+      "skip_reason": null
+    },
+    "5": {
+      "stage_id": 5,
+      "stage_name": "tdd_tests",
+      "status": "completed",
+      "start_time": "2026-02-24T19:57:51.516794",
+      "end_time": "2026-02-24T20:17:22.945541",
+      "duration_seconds": 1171.428747,
+      "attempts": 1,
+      "output_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/outputs/stage05_tdd_tests_output_20260224_195751.txt",
+      "prompt_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/prompts/stage05_tdd_tests_prompt_20260224_195751.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/05-tdd-tests.md"
+      ],
+      "skip_reason": null
+    },
+    "6": {
+      "stage_id": 6,
+      "stage_name": "implement_fix",
+      "status": "completed",
+      "start_time": "2026-02-24T20:17:22.978397",
+      "end_time": "2026-02-24T20:20:03.184703",
+      "duration_seconds": 160.206306,
+      "attempts": 1,
+      "output_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/outputs/stage06_implement_fix_output_20260224_201722.txt",
+      "prompt_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/prompts/stage06_implement_fix_prompt_20260224_201722.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/06-fix-changes.md"
+      ],
+      "skip_reason": null
+    },
+    "7": {
+      "stage_id": 7,
+      "stage_name": "build_verify",
+      "status": "completed",
+      "start_time": "2026-02-24T20:20:53.311878",
+      "end_time": "2026-02-24T20:27:03.772020",
+      "duration_seconds": 370.460142,
+      "attempts": 1,
+      "output_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/outputs/stage07_build_verify_output_20260224_202053.txt",
+      "prompt_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/prompts/stage07_build_verify_prompt_20260224_202053.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/07-build-results.md"
+      ],
+      "skip_reason": null
+    },
+    "8": {
+      "stage_id": 8,
+      "stage_name": "code_review",
+      "status": "completed",
+      "start_time": "2026-02-24T20:27:03.774108",
+      "end_time": "2026-02-24T20:28:43.920441",
+      "duration_seconds": 100.146333,
+      "attempts": 1,
+      "output_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/outputs/stage08_code_review_output_20260224_202703.txt",
+      "prompt_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/prompts/stage08_code_review_prompt_20260224_202703.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/08-code-review.md"
+      ],
+      "skip_reason": null
+    },
+    "9": {
+      "stage_id": 9,
+      "stage_name": "finalize",
+      "status": "completed",
+      "start_time": "2026-02-24T20:28:43.923347",
+      "end_time": "2026-02-24T20:30:49.091537",
+      "duration_seconds": 125.16819,
+      "attempts": 1,
+      "output_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/outputs/stage09_finalize_output_20260224_202843.txt",
+      "prompt_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/prompts/stage09_finalize_prompt_20260224_202843.md",
+      "error_message": null,
+      "model_output_summary": null,
+      "outputs_created": [
+        "llm_out/fix-result.json",
+        "llm_out/02-fix-implementation.md"
+      ],
+      "skip_reason": null
+    }
+  },
+  "platform_compatible": true,
+  "skip_remaining": false,
+  "skip_reason": null,
+  "model_used": "claude-opus-4.6-fast",
+  "chromium_src": "/workspace/cr1/src",
+  "baseline_commit": "latest_main",
+  "build_folder": "release_x64",
+  "build_error_count": 0,
+  "last_build_error": null,
+  "pre_sanity_build": {
+    "success": true,
+    "build_type": "pre_sanity",
+    "start_time": "2026-02-24T19:40:51.045846",
+    "end_time": "2026-02-24T19:48:25.795153",
+    "duration_seconds": 434.808840264,
+    "exit_code": 0,
+    "log_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/logs/build_pre_sanity_20260224_194051.log",
+    "error_message": null
+  },
+  "post_fix_build": {
+    "success": true,
+    "build_type": "post_fix",
+    "start_time": "2026-02-24T20:20:08.224807",
+    "end_time": "2026-02-24T20:20:53.308995",
+    "duration_seconds": 44.577000789,
+    "exit_code": 0,
+    "log_file": "/data/active/details-1771962050-Clipboardchange-event-Fix-crash-caused-by-possible-null-dere/llm_out/logs/build_post_fix_20260224_202008.log",
+    "error_message": null
+  },
+  "fix_branch": "fix/details",
+  "skip_cl_upload": false,
+  "special_instructions": "Also in the reports, document top 5 approaches to fix and the recommended one",
+  "include_explainer": false,
+  "build_service_url": "http://host.docker.internal:8090"
+}
