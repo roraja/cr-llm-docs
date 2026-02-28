@@ -10,7 +10,7 @@
 
 ## Files
 
-- [hld.md](hld.md)
+- [lld.md](lld.md)
 
 ---
 *Published by Bug Fixer Dashboard*
